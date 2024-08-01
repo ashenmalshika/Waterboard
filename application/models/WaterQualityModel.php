@@ -9,6 +9,6 @@ class WaterQualityModel extends CI_Model {
     }
 
     public function insertWaterquality($data) {
-        return $this->db->insert('waterquality', $data);
+        return $this->db->insert('waterqualitydata', $data);
     }
 }
