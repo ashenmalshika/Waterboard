@@ -4,144 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Quality Data Entry</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #d0d0e1;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        .section h3 {
-            margin-bottom: 10px;
-            color: #007BFF;
-            border-bottom: 2px solid #007BFF;
-            padding-bottom: 5px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, select {
-            width: calc(100% - 16px);
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .flex-row {
-            display: flex;
-            justify-content: space-between;
-        }
-        .flex-row .column {
-            flex: 1;
-            margin-right: 10px;
-        }
-        .flex-row .column:last-child {
-            margin-right: 0;
-        }
-        .button-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-selection-button {
-            padding: 12px;
-            background-color: #6c757d; /* Different color from submit button */
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            width: 200px;
-            margin: 0 10px;
-            margin-top:10px;
-        }
-        .form-selection-button:hover {
-            background-color: #5a6268;
-        }
-        .form-selection-button.active {
-            background-color: #28a745 !important; /* Green color for active state */
-        }
-        button[type="submit"] {
-            padding: 12px;
-            background-color: #007BFF; /* Submit button color */
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            width: 200px;
-            margin: 0 auto;
-        }
-        button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        .hidden {
-            display: none;
-        }
-        .logout-button {
-            padding: 6px 18px;
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            display: inline-block;
-        }
-        .logout-button:hover {
-            background-color: #c82333;
-        }
-        span {
-            float: right;
-        }
-        .message {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-        .message.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .message.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        .validation-errors {
-            color: red;
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/userDashboard.css') ?>">
 </head>
 <body>
     <div class="container">
@@ -194,7 +57,6 @@
                         <label for="raw_odor">Odor:</label>
                         <input type="text" id="raw_odor" name="raw_odor" required>
                     </div>
-
                     <div class="column">
                         <h4>Settling Basin</h4>
                         <label for="settling_rcl">RCL (mg/L):</label>
@@ -206,7 +68,6 @@
                         <label for="settling_ph">pH:</label>
                         <input type="number" step="0.1" id="settling_ph" name="settling_ph" required>
                     </div>
-
                     <div class="column">
                         <h4>Treated Water</h4>
                         <label for="treated_rcl">RCL (mg/L):</label>
@@ -233,7 +94,6 @@
                         <label for="treated_residual_alum_pacl">Residual Alum/PACl (ppm):</label>
                         <input type="number" step="0.01" id="treated_residual_alum_pacl" name="treated_residual_alum_pacl" required>
                     </div>
-
                     <div class="column">
                         <h4>Filter Effluent</h4>
                         <label for="filter_rcl">RCL (mg/L):</label>
