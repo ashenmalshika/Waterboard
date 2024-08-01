@@ -34,118 +34,215 @@
             </div>
 
             <div id="2hour" class="section hidden">
-            <div class="section">
-                <h3>Water Quality</h3>
-                <div class="flex-row">
-                    <div class="column">
-                        <h4>Raw Water</h4>
-                        <label for="raw_turbidity">Turbidity (NTU):</label>
-                        <input type="number" step="0.01" id="raw_turbidity" name="raw_turbidity" required>
-                        
-                        <label for="raw_ph">pH:</label>
-                        <input type="number" step="0.1" id="raw_ph" name="raw_ph" required>
-                        
-                        <label for="raw_conductivity">Electrical Conductivity (µS/cm):</label>
-                        <input type="number" step="0.1" id="raw_conductivity" name="raw_conductivity" required>
-                        
-                        <label for="raw_salinity">Chloride/Salinity (mg/L):</label>
-                        <input type="number" step="1" id="raw_salinity" name="raw_salinity" required>
-                        
-                        <label for="raw_color">Color (Hazen):</label>
-                        <input type="number" step="1" id="raw_color" name="raw_color" required>
-                        
-                        <label for="raw_odor">Odor:</label>
-                        <input type="text" id="raw_odor" name="raw_odor" required>
-                    </div>
-                    <div class="column">
-                        <h4>Settling Basin</h4>
-                        <label for="settling_rcl">RCL (mg/L):</label>
-                        <input type="number" step="0.1" id="settling_rcl" name="settling_rcl" required>
-                        
-                        <label for="settling_turbidity">Turbidity (NTU):</label>
-                        <input type="number" step="0.01" id="settling_turbidity" name="settling_turbidity" required>
-                        
-                        <label for="settling_ph">pH:</label>
-                        <input type="number" step="0.1" id="settling_ph" name="settling_ph" required>
-                    </div>
-                    <div class="column">
-                        <h4>Treated Water</h4>
-                        <label for="treated_rcl">RCL (mg/L):</label>
-                        <input type="number" step="0.1" id="treated_rcl" name="treated_rcl" required>
-                        
-                        <label for="treated_turbidity">Turbidity (NTU):</label>
-                        <input type="number" step="0.01" id="treated_turbidity" name="treated_turbidity" required>
-                        
-                        <label for="treated_ph">pH:</label>
-                        <input type="number" step="0.1" id="treated_ph" name="treated_ph" required>
-                        
-                        <label for="treated_conductivity">Electrical Conductivity (µS/cm):</label>
-                        <input type="number" step="0.01" id="treated_conductivity" name="treated_conductivity" required>
-                        
-                        <label for="treated_salinity">Chloride/Salinity (mg/L):</label>
-                        <input type="number" step="0.1" id="treated_salinity" name="treated_salinity" required>
-                        
-                        <label for="treated_color">Color (Hazen):</label>
-                        <input type="number" step="1" id="treated_color" name="treated_color" required>
-                        
-                        <label for="treated_odor">Odor:</label>
-                        <input type="text" id="treated_odor" name="treated_odor" required>
-                        
-                        <label for="treated_residual_alum_pacl">Residual Alum/PACl (ppm):</label>
-                        <input type="number" step="0.01" id="treated_residual_alum_pacl" name="treated_residual_alum_pacl" required>
-                    </div>
-                    <div class="column">
-                        <h4>Filter Effluent</h4>
-                        <label for="filter_rcl">RCL (mg/L):</label>
-                        <input type="number" step="0.1" id="filter_rcl" name="filter_rcl" required>
-                        
-                        <label for="filter_turbidity">Turbidity (NTU):</label>
-                        <input type="number" step="0.01" id="filter_turbidity" name="filter_turbidity" required>
-                        
-                        <label for="filter_ph">pH:</label>
-                        <input type="number" step="0.1" id="filter_ph" name="filter_ph" required>
+                <div class="section">
+                    <h3>Water Quality</h3>
+                    <div class="flex-row">
+                        <div class="column">
+                            <h4>Raw Water</h4>
+                            <label for="raw_turbidity">Turbidity (NTU):</label>
+                            <input type="number" step="0.01" id="raw_turbidity" name="raw_turbidity" required>
+                            
+                            <label for="raw_ph">pH:</label>
+                            <input type="number" step="0.1" id="raw_ph" name="raw_ph" required>
+                            
+                            <label for="raw_conductivity">Electrical Conductivity (µS/cm):</label>
+                            <input type="number" step="0.1" id="raw_conductivity" name="raw_conductivity" required>
+                            
+                            <label for="raw_salinity">Chloride/Salinity (mg/L):</label>
+                            <input type="number" step="1" id="raw_salinity" name="raw_salinity" required>
+                            
+                            <label for="raw_color">Color (Hazen):</label>
+                            <input type="number" step="1" id="raw_color" name="raw_color" required>
+                            
+                            <label for="raw_odor">Odor:</label>
+                            <input type="text" id="raw_odor" name="raw_odor" required>
+                        </div>
+                        <div class="column">
+                            <h4>Settling Basin</h4>
+                            <label for="settling_rcl">RCL (mg/L):</label>
+                            <input type="number" step="0.1" id="settling_rcl" name="settling_rcl" required>
+                            
+                            <label for="settling_turbidity">Turbidity (NTU):</label>
+                            <input type="number" step="0.01" id="settling_turbidity" name="settling_turbidity" required>
+                            
+                            <label for="settling_ph">pH:</label>
+                            <input type="number" step="0.1" id="settling_ph" name="settling_ph" required>
+                        </div>
+                        <div class="column">
+                            <h4>Treated Water</h4>
+                            <label for="treated_rcl">RCL (mg/L):</label>
+                            <input type="number" step="0.1" id="treated_rcl" name="treated_rcl" required>
+                            
+                            <label for="treated_turbidity">Turbidity (NTU):</label>
+                            <input type="number" step="0.01" id="treated_turbidity" name="treated_turbidity" required>
+                            
+                            <label for="treated_ph">pH:</label>
+                            <input type="number" step="0.1" id="treated_ph" name="treated_ph" required>
+                            
+                            <label for="treated_conductivity">Electrical Conductivity (µS/cm):</label>
+                            <input type="number" step="0.01" id="treated_conductivity" name="treated_conductivity" required>
+                            
+                            <label for="treated_salinity">Chloride/Salinity (mg/L):</label>
+                            <input type="number" step="0.1" id="treated_salinity" name="treated_salinity" required>
+                            
+                            <label for="treated_color">Color (Hazen):</label>
+                            <input type="number" step="1" id="treated_color" name="treated_color" required>
+                            
+                            <label for="treated_odor">Odor:</label>
+                            <input type="text" id="treated_odor" name="treated_odor" required>
+                            
+                            <label for="treated_residual_alum_pacl">Residual Alum/PACl (ppm):</label>
+                            <input type="number" step="0.01" id="treated_residual_alum_pacl" name="treated_residual_alum_pacl" required>
+                        </div>
+                        <div class="column">
+                            <h4>Filter Effluent</h4>
+                            <label for="filter_rcl">RCL (mg/L):</label>
+                            <input type="number" step="0.1" id="filter_rcl" name="filter_rcl" required>
+                            
+                            <label for="filter_turbidity">Turbidity (NTU):</label>
+                            <input type="number" step="0.01" id="filter_turbidity" name="filter_turbidity" required>
+                            
+                            <label for="filter_ph">pH:</label>
+                            <input type="number" step="0.1" id="filter_ph" name="filter_ph" required>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
 
             <div id="daily" class="section hidden">
                 <div class="section">
                     <h3>Production</h3>
-                    <h4>Distribution</h4>
-                    <label for="distribution_diameter">Diameter :</label>
-                    <input type="text" id="distribution_diameter" name="distribution_diameter" required pattern="\d+" title="Please enter a whole number">
+                    <div>Select number of Pipes :
+                        <div>
+                            <button type="button" id="btn_one_pipe" class="form-selection-button" onclick="updatePipeVisibility(1)">One</button>
+                            <button type="button" id="btn_two_pipes" class="form-selection-button" onclick="updatePipeVisibility(2)">Two</button>
+                            <button type="button" id="btn_three_pipes" class="form-selection-button" onclick="updatePipeVisibility(3)">Three</button>
+                        </div>
+                    </div>
+                    <!-- Details for Pipe 1 -->
+                    <div id="pipe1_details" class="unique-card hidden">
+                        <h4>PIPE 1</h4>
+                        <div class="unique-column">
+                            <div>
+                                <h4>Distribution</h4>
+                                <label class="unique-label" for="pipe1_distribution_diameter">Diameter:</label>
+                                <input class="unique-input" type="text" id="pipe1_distribution_diameter" name="pipe1_distribution_diameter" required pattern="\d+" title="Please enter a whole number">
 
-                    <label for="bulkmeter_id">Bulk Meter ID :</label>
-                    <input type="text" id="bulkmeter_id" name="bulkmeter_id" required>
+                                <label class="unique-label" for="pipe1_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe1_bulkmeter_id" name="pipe1_bulkmeter_id" required>
 
-                    <label for="bulkmeter_reading">Bulk Meter Reading :</label>
-                    <input type="text" id="bulkmeter_reading" name="bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                                <label class="unique-label" for="pipe1_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="text" id="pipe1_bulkmeter_reading" name="pipe1_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                            </div>
+                            <div>
+                                <h4>Pumping</h4>
+                                <label class="unique-label" for="pipe1_pumping_diameter">Diameter:</label>
+                                <input class="unique-input" type="text" id="pipe1_pumping_diameter" name="pipe1_pumping_diameter" required pattern="\d+" title="Please enter a whole number">
+
+                                <label class="unique-label" for="pipe1_pumping_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe1_pumping_bulkmeter_id" name="pipe1_pumping_bulkmeter_id" required>
+
+                                <label class="unique-label" for="pipe1_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="text" id="pipe1_pumping_bulkmeter_reading" name="pipe1_pumping_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                            </div>
+                            <div>
+                                <h4>Raw Water</h4>
+                                <label class="unique-label" for="pipe1_raw_diameter">Diameter:</label>
+                                <input class="unique-input" type="text" id="pipe1_raw_diameter" name="pipe1_raw_diameter" required pattern="\d+" title="Please enter a whole number">
+
+                                <label class="unique-label" for="pipe1_raw_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe1_raw_bulkmeter_id" name="pipe1_raw_bulkmeter_id" required>
+
+                                <label class="unique-label" for="pipe1_raw_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="text" id="pipe1_raw_bulkmeter_reading" name="pipe1_raw_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Details for Pipe 2 -->
+                    <div id="pipe2_details" class="unique-card hidden">
+                        <h4>PIPE 2</h4>
+                        <div class="unique-column">
+                            <div>
+                                <h4>Distribution</h4>
+                                <label class="unique-label" for="pipe2_distribution_diameter">Diameter:</label>
+                                <input class="unique-input" type="text" id="pipe2_distribution_diameter" name="pipe2_distribution_diameter" required pattern="\d+" title="Please enter a whole number">
+
+                                <label class="unique-label" for="pipe2_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe2_bulkmeter_id" name="pipe2_bulkmeter_id" required>
+
+                                <label class="unique-label" for="pipe2_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="text" id="pipe2_bulkmeter_reading" name="pipe2_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                            </div>
+                            <div>
+                                <h4>Pumping</h4>
+                                <label class="unique-label" for="pipe2_pumping_diameter">Diameter:</label>
+                                <input class="unique-input" type="text" id="pipe2_pumping_diameter" name="pipe2_pumping_diameter" required pattern="\d+" title="Please enter a whole number">
+
+                                <label class="unique-label" for="pipe2_pumping_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe2_pumping_bulkmeter_id" name="pipe2_pumping_bulkmeter_id" required>
+
+                                <label class="unique-label" for="pipe2_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="text" id="pipe2_pumping_bulkmeter_reading" name="pipe2_pumping_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                            </div>
+                            <div>
+                                <h4>Raw Water</h4>
+                                <label class="unique-label" for="pipe2_raw_diameter">Diameter:</label>
+                                <input class="unique-input" type="text" id="pipe2_raw_diameter" name="pipe2_raw_diameter" required pattern="\d+" title="Please enter a whole number">
+
+                                <label class="unique-label" for="pipe2_raw_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe2_raw_bulkmeter_id" name="pipe2_raw_bulkmeter_id" required>
+
+                                <label class="unique-label" for="pipe2_raw_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="text" id="pipe2_raw_bulkmeter_reading" name="pipe2_raw_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Details for Pipe 3 -->
+                    <div id="pipe3_details" class="unique-card hidden">
+                        <h4>PIPE 3</h4>
+                        <div class="unique-column">
+                            <div>
+                                <h4>Distribution</h4>
+                                <label class="unique-label" for="pipe3_distribution_diameter">Diameter:</label>
+                                <input class="unique-input" type="text" id="pipe3_distribution_diameter" name="pipe3_distribution_diameter" required pattern="\d+" title="Please enter a whole number">
+
+                                <label class="unique-label" for="pipe3_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe3_bulkmeter_id" name="pipe3_bulkmeter_id" required>
+
+                                <label class="unique-label" for="pipe3_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="text" id="pipe3_bulkmeter_reading" name="pipe3_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                            </div>
+                            <div>
+                                <h4>Pumping</h4>
+                                <label class="unique-label" for="pipe3_pumping_diameter">Diameter:</label>
+                                <input class="unique-input" type="text" id="pipe3_pumping_diameter" name="pipe3_pumping_diameter" required pattern="\d+" title="Please enter a whole number">
+
+                                <label class="unique-label" for="pipe3_pumping_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe3_pumping_bulkmeter_id" name="pipe3_pumping_bulkmeter_id" required>
+
+                                <label class="unique-label" for="pipe3_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="text" id="pipe3_pumping_bulkmeter_reading" name="pipe3_pumping_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                            </div>
+                            <div>
+                                <h4>Raw Water</h4>
+                                <label class="unique-label" for="pipe3_raw_diameter">Diameter:</label>
+                                <input class="unique-input" type="text" id="pipe3_raw_diameter" name="pipe3_raw_diameter" required pattern="\d+" title="Please enter a whole number">
+
+                                <label class="unique-label" for="pipe3_raw_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe3_raw_bulkmeter_id" name="pipe3_raw_bulkmeter_id" required>
+
+                                <label class="unique-label" for="pipe3_raw_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="text" id="pipe3_raw_bulkmeter_reading" name="pipe3_raw_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-                <div class="section">
-                    <h4>Pumping</h4>
-                    <label for="pumping_diameter">Diameter :</label>
-                    <input type="text" id="pumping_diameter" name="pumping_diameter" required pattern="\d+" title="Please enter a whole number">
-
-                    <label for="pumping_bulkmeter_id">Bulk Meter ID :</label>
-                    <input type="text" id="pumping_bulkmeter_id" name="pumping_bulkmeter_id" required>
-
-                    <label for="pumping_bulkmeter_reading">Bulk Meter Reading :</label>
-                    <input type="text" id="pumping_bulkmeter_reading" name="pumping_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
-                </div>
-
-                <div class="section">
-                    <h4>Raw Water</h4>
-                    <label for="raw_diameter">Diameter :</label>
-                    <input type="text" id="raw_diameter" name="raw_diameter" required pattern="\d+" title="Please enter a whole number">
-
-                    <label for="raw_bulkmeter_id">Bulk Meter ID :</label>
-                    <input type="text" id="raw_bulkmeter_id" name="raw_bulkmeter_id" required>
-
-                    <label for="raw_bulkmeter_reading">Bulk Meter Reading :</label>
-                    <input type="text" id="raw_bulkmeter_reading" name="raw_bulkmeter_reading" required pattern="\d+" title="Please enter a whole number">
-                </div>
+        
 
                 <div class="section">
                     <h3>Chemical Dosage (Kg/d)</h3>
@@ -200,28 +297,7 @@
         </form>
     </div>
 
-    <script>
-        function showSection(sectionId, btn) {
-            // Hide all sections
-            document.getElementById('2hour').classList.add('hidden');
-            document.getElementById('daily').classList.add('hidden');
-            document.getElementById('monthly').classList.add('hidden');
-            // Show the selected section
-            document.getElementById(sectionId).classList.remove('hidden');
+    <script src="<?php echo base_url('assets/javascript/userDashboard.js'); ?>"></script>
 
-            // Reset button colors
-            document.getElementById('btn-2hour').classList.remove('active');
-            document.getElementById('btn-daily').classList.remove('active');
-            document.getElementById('btn-monthly').classList.remove('active');
-
-            // Set the clicked button to active (green)
-            btn.classList.add('active');
-
-            // Show the submit button
-            document.getElementById('submit-container').classList.remove('hidden');
-        }
-    </script>
 </body>
 </html>
-
-
