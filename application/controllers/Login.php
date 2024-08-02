@@ -18,6 +18,13 @@ class Login extends CI_Controller {
             if ($user) {
                 $this->session->set_userdata('user_id', $user->id);
                 $this->session->set_userdata('role', $user->role);
+
+                $branchDetails = $this->User_model->getBranchDetails($username);
+                if ($branchDetails) {
+                    $this->session->set_userdata('branch_id', $branchDetails->branchID);
+                    $this->session->set_userdata('branch_name', $branchDetails->branchName);
+                }
+
                 if ($user->role == 'admin') {
                     redirect('adminDashboard');
                 } else {

@@ -11,6 +11,9 @@ class Waterquality extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('userDashboard');
         } else {
+            $branch_id = $this->input->post('branch_id');
+            $branch_name = $this->input->post('branch_name');
+
             $data = array(
                 'date' => $this->input->post('date'),
                 'time' => $this->input->post('time'),
@@ -76,7 +79,9 @@ class Waterquality extends CI_Controller {
                 'pipe3_pumping_bulkmeter_reading' => $this->input->post('pipe3_pumping_bulkmeter_reading'),
                 'pipe3_raw_diameter' => $this->input->post('pipe3_raw_diameter'),
                 'pipe3_raw_bulkmeter_id' => $this->input->post('pipe3_raw_bulkmeter_id'),
-                'pipe3_raw_bulkmeter_reading' => $this->input->post('pipe3_raw_bulkmeter_reading')
+                'pipe3_raw_bulkmeter_reading' => $this->input->post('pipe3_raw_bulkmeter_reading'),
+                'branchID' => $branch_id,
+                'branchName' => $branch_name
             );
             
 

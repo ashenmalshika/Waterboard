@@ -7,9 +7,14 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/userDashboard.css') ?>">
 </head>
 <body>
+        <?php
+        // Access session data
+        $branch_id = $this->session->userdata('branch_id');
+        $branch_name = $this->session->userdata('branch_name');
+        ?>
     <div class="container">
         <span><a href="<?php echo base_url('logout'); ?>" class="logout-button">Logout</a></span><br>
-        <h1>Water Quality Data Entry</h1>
+        <h1>Water Quality Data Entry - <?php echo $branch_name; ?>  </h1>
         <?php if ($this->session->flashdata('success')): ?>
             <p class="message success"><?php echo $this->session->flashdata('success'); ?></p>
         <?php endif; ?>
@@ -19,12 +24,18 @@
         <div class="validation-errors">
             <?php echo validation_errors(); ?>
         </div>
+        
         <form id="dataEntryForm" action="<?php echo site_url('addData'); ?>" method="post">
             <div class="section">
                 <label for="date">Date:</label>
                 <input type="date" id="date" name="date" required>
                 <label for="time">Time:</label>
                 <input type="time" id="time" name="time" required>
+
+                <!-- Hidden inputs for branch details -->
+                <input type="hidden" name="branch_id" value="<?php echo htmlspecialchars($branch_id); ?>">
+                <input type="hidden" name="branch_name" value="<?php echo htmlspecialchars($branch_name); ?>">
+
             </div>
 
             <div class="button-container">

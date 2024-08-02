@@ -20,4 +20,12 @@ class User_model extends CI_Model {
         $query = $this->db->get('users'); // Assuming your table name is 'users'
         return $query->result();
     }
+    // New function to get branch details
+    public function getBranchDetails($username) {
+        $this->db->select('branchID, branchName');
+        $this->db->where('username', $username);
+        $query = $this->db->get('users'); // Assuming the table name is 'branches'
+
+        return $query->row();
+    }
 }
