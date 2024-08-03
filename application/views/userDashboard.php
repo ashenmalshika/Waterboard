@@ -137,35 +137,35 @@
                             <div>
                                 <h4>Distribution</h4>
                                 <label class="unique-label" for="pipe1_distribution_diameter">Diameter:</label>
-                                <input class="unique-input" type="text" id="pipe1_distribution_diameter" name="pipe1_distribution_diameter"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe1_distribution_diameter" name="pipe1_distribution_diameter"  pattern="\d+" title="Please enter a whole number">
 
                                 <label class="unique-label" for="pipe1_bulkmeter_id">Bulk Meter ID:</label>
                                 <input class="unique-input" type="text" id="pipe1_bulkmeter_id" name="pipe1_bulkmeter_id" >
 
                                 <label class="unique-label" for="pipe1_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="text" id="pipe1_bulkmeter_reading" name="pipe1_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe1_bulkmeter_reading" name="pipe1_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
                             </div>
                             <div>
                                 <h4>Pumping</h4>
                                 <label class="unique-label" for="pipe1_pumping_diameter">Diameter:</label>
-                                <input class="unique-input" type="text" id="pipe1_pumping_diameter" name="pipe1_pumping_diameter"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe1_pumping_diameter" name="pipe1_pumping_diameter"  pattern="\d+" title="Please enter a whole number">
 
                                 <label class="unique-label" for="pipe1_pumping_bulkmeter_id">Bulk Meter ID:</label>
                                 <input class="unique-input" type="text" id="pipe1_pumping_bulkmeter_id" name="pipe1_pumping_bulkmeter_id" >
 
                                 <label class="unique-label" for="pipe1_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="text" id="pipe1_pumping_bulkmeter_reading" name="pipe1_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe1_pumping_bulkmeter_reading" name="pipe1_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
                             </div>
                             <div>
                                 <h4>Raw Water</h4>
                                 <label class="unique-label" for="pipe1_raw_diameter">Diameter:</label>
-                                <input class="unique-input" type="text" id="pipe1_raw_diameter" name="pipe1_raw_diameter"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe1_raw_diameter" name="pipe1_raw_diameter"  pattern="\d+" title="Please enter a whole number">
 
                                 <label class="unique-label" for="pipe1_raw_bulkmeter_id">Bulk Meter ID:</label>
                                 <input class="unique-input" type="text" id="pipe1_raw_bulkmeter_id" name="pipe1_raw_bulkmeter_id" >
 
                                 <label class="unique-label" for="pipe1_raw_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="text" id="pipe1_raw_bulkmeter_reading" name="pipe1_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe1_raw_bulkmeter_reading" name="pipe1_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
                             </div>
                         </div>
                     </div>
@@ -178,35 +178,35 @@
                             <div>
                                 <h4>Distribution</h4>
                                 <label class="unique-label" for="pipe2_distribution_diameter">Diameter:</label>
-                                <input class="unique-input" type="text" id="pipe2_distribution_diameter" name="pipe2_distribution_diameter"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe2_distribution_diameter" name="pipe2_distribution_diameter"  pattern="\d+" title="Please enter a whole number">
 
                                 <label class="unique-label" for="pipe2_bulkmeter_id">Bulk Meter ID:</label>
                                 <input class="unique-input" type="text" id="pipe2_bulkmeter_id" name="pipe2_bulkmeter_id" >
 
                                 <label class="unique-label" for="pipe2_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="text" id="pipe2_bulkmeter_reading" name="pipe2_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe2_bulkmeter_reading" name="pipe2_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
                             </div>
                             <div>
                                 <h4>Pumping</h4>
                                 <label class="unique-label" for="pipe2_pumping_diameter">Diameter:</label>
-                                <input class="unique-input" type="text" id="pipe2_pumping_diameter" name="pipe2_pumping_diameter"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe2_pumping_diameter" name="pipe2_pumping_diameter"  pattern="\d+" title="Please enter a whole number">
 
                                 <label class="unique-label" for="pipe2_pumping_bulkmeter_id">Bulk Meter ID:</label>
                                 <input class="unique-input" type="text" id="pipe2_pumping_bulkmeter_id" name="pipe2_pumping_bulkmeter_id" >
 
                                 <label class="unique-label" for="pipe2_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="text" id="pipe2_pumping_bulkmeter_reading" name="pipe2_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe2_pumping_bulkmeter_reading" name="pipe2_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
                             </div>
                             <div>
                                 <h4>Raw Water</h4>
                                 <label class="unique-label" for="pipe2_raw_diameter">Diameter:</label>
-                                <input class="unique-input" type="text" id="pipe2_raw_diameter" name="pipe2_raw_diameter"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe2_raw_diameter" name="pipe2_raw_diameter"  pattern="\d+" title="Please enter a whole number">
 
                                 <label class="unique-label" for="pipe2_raw_bulkmeter_id">Bulk Meter ID:</label>
                                 <input class="unique-input" type="text" id="pipe2_raw_bulkmeter_id" name="pipe2_raw_bulkmeter_id" >
 
                                 <label class="unique-label" for="pipe2_raw_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="text" id="pipe2_raw_bulkmeter_reading" name="pipe2_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe2_raw_bulkmeter_reading" name="pipe2_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
                             </div>
                         </div>
                     </div>
@@ -219,35 +219,35 @@
                             <div>
                                 <h4>Distribution</h4>
                                 <label class="unique-label" for="pipe3_distribution_diameter">Diameter:</label>
-                                <input class="unique-input" type="text" id="pipe3_distribution_diameter" name="pipe3_distribution_diameter"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe3_distribution_diameter" name="pipe3_distribution_diameter"  pattern="\d+" title="Please enter a whole number">
 
                                 <label class="unique-label" for="pipe3_bulkmeter_id">Bulk Meter ID:</label>
                                 <input class="unique-input" type="text" id="pipe3_bulkmeter_id" name="pipe3_bulkmeter_id" >
 
                                 <label class="unique-label" for="pipe3_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="text" id="pipe3_bulkmeter_reading" name="pipe3_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe3_bulkmeter_reading" name="pipe3_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
                             </div>
                             <div>
                                 <h4>Pumping</h4>
                                 <label class="unique-label" for="pipe3_pumping_diameter">Diameter:</label>
-                                <input class="unique-input" type="text" id="pipe3_pumping_diameter" name="pipe3_pumping_diameter"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe3_pumping_diameter" name="pipe3_pumping_diameter"  pattern="\d+" title="Please enter a whole number">
 
                                 <label class="unique-label" for="pipe3_pumping_bulkmeter_id">Bulk Meter ID:</label>
                                 <input class="unique-input" type="text" id="pipe3_pumping_bulkmeter_id" name="pipe3_pumping_bulkmeter_id" >
 
                                 <label class="unique-label" for="pipe3_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="text" id="pipe3_pumping_bulkmeter_reading" name="pipe3_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe3_pumping_bulkmeter_reading" name="pipe3_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
                             </div>
                             <div>
                                 <h4>Raw Water</h4>
                                 <label class="unique-label" for="pipe3_raw_diameter">Diameter:</label>
-                                <input class="unique-input" type="text" id="pipe3_raw_diameter" name="pipe3_raw_diameter"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe3_raw_diameter" name="pipe3_raw_diameter"  pattern="\d+" title="Please enter a whole number">
 
                                 <label class="unique-label" for="pipe3_raw_bulkmeter_id">Bulk Meter ID:</label>
                                 <input class="unique-input" type="text" id="pipe3_raw_bulkmeter_id" name="pipe3_raw_bulkmeter_id" >
 
                                 <label class="unique-label" for="pipe3_raw_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="text" id="pipe3_raw_bulkmeter_reading" name="pipe3_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
+                                <input class="unique-input" type="number" id="pipe3_raw_bulkmeter_reading" name="pipe3_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number">
                             </div>
                         </div>
                     </div>
