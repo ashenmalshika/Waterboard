@@ -37,7 +37,7 @@
                with font-awesome or any other icon font library -->
 
                
-          <li class="nav-header">Home</li>
+          <!-- <li class="nav-header">Home</li>
           <li class="nav-item">
             <a href=<?php echo base_url('home');?> class="nav-link">
             <i class="nav-icon fa fa-home"></i>
@@ -46,13 +46,13 @@
                 <span class="badge badge-info right"></span>
               </p>
             </a>
-          </li>
+          </li> -->
 
           <li class="nav-item">
-            <a href=<?php echo base_url('Dashboard/showallsessions');?> class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+            <a href=<?php echo base_url('Dashboard/searchData');?> class="nav-link">
+              <i class="nav-icon fas fa-search"></i>
               <p>
-                All Sessions
+                Search Data
                 <span class="badge badge-info right"></span>
               </p>
             </a>
@@ -70,7 +70,7 @@
 
           <li class="nav-item">
             <a href=<?php echo base_url('logout');?>  class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
+            <i class="nav-icon fa fa-power-off" aria-hidden="true"></i>
               <p>
                 Logout
                 <span class="badge badge-info right"></span>

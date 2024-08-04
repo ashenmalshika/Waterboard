@@ -1,0 +1,13 @@
+.page-number {
+    display: none;
+}
+
+#pagination {
+    margin-top: 30px;
+    text-align: right;
+}
+
+button {
+    background-color: white;
+    border-radius: 3px;
+}

@@ -26,7 +26,7 @@ class Login extends CI_Controller {
                 }
 
                 if ($user->role == 'admin') {
-                    redirect('adminDashboard');
+                    redirect('Dashboard/searchData');
                 } else {
                     redirect('Welcome/userDashboard');
                 }

@@ -28,4 +28,23 @@ class User_model extends CI_Model {
 
         return $query->row();
     }
+    public function getWaterQuality() {
+        $this->db->select('branchID, branchName, date, time, id, formNo, dataInsertedDate');
+        $this->db->from('waterqualitydata');
+        $this->db->order_by('date', 'DESC'); // Order by date in descending order
+        $this->db->limit(1000);
+        $query = $this->db->get();
+    
+        if ($query->num_rows() > 0) {
+            return $query->result(); // Return all rows
+        } else {
+            return false; // Return false if no rows are found
+        }
+    }
+    public function getFormData($id) {
+        $this->db->select('*');
+        $this->db->where('id', $id);
+        $query = $this->db->get('waterqualitydata');
+        return $query->row();
+    }
 }

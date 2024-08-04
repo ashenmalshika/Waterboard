@@ -44,4 +44,6 @@ function showSection(sectionId, btn) {
     // Show the submit button
     document.getElementById('submit-container').classList.remove('hidden');
 }
-  
+function goBack() {
+    window.history.back();
+}

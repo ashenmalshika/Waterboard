@@ -36,8 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Branch ID</th>
-                                        <th>Branch Name</th>
+                                        <th>Plant ID</th>
+                                        <th>Plant Name</th>
                                         <th>Username</th>
                                         <th>Password</th>
  
