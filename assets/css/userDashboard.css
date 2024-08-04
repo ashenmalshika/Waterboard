@@ -198,6 +198,28 @@
             background-color: #0056b3; /* Darker blue for active state */
             color: #fff; /* White text for active state */
         }
+        .form-selection-container {
+            display: flex;
+            flex-direction: row; /* Align items in a column */
+            padding: 10px; /* Padding around the container */
+            background-color: #f7f7f7; /* Light grey background */
+            border: 1px solid #ccc; /* Grey border */
+            border-radius: 5px; /* Rounded corners */
+            width: fit-content; /* Fit content width */
+            margin-top:10px;
+            margin-bottom:10px;
+            width: fit-content;
+            margin: auto;
+        }
+    
+        .form-selection-container label {
+            margin: 8px; /* Margin around each label */
+        }
+        
+        .form-selection-container label:first-child {
+            font-weight: bold; /* Bold the title label */
+            margin-bottom: 12px; /* Larger margin below the title */
+        }
         
         /* Responsive adjustments */
         @media (max-width: 768px) {

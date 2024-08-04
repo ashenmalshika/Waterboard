@@ -1,3 +1,25 @@
+function showSection(sectionId) {
+    // Hide all sections
+    document.getElementById('2hour').classList.add('hidden');
+    document.getElementById('daily').classList.add('hidden');
+    document.getElementById('monthly').classList.add('hidden');
+
+    // Show the selected section
+    document.getElementById(sectionId).classList.remove('hidden');
+
+    // Show the submit button
+    document.getElementById('submit-container').classList.remove('hidden');
+}
+
+// Add event listeners to the radio buttons
+document.addEventListener('DOMContentLoaded', function() {
+    var radios = document.querySelectorAll('input[type="radio"][name="form_type"]');
+    radios.forEach(radio => {
+        radio.addEventListener('click', function() {
+            showSection(this.value === '1' ? '2hour' : this.value === '2' ? 'daily' : 'monthly');
+        });
+    });
+});
 
 function updatePipeVisibility(pipeCount) {
     // Reset active class for all buttons
@@ -25,25 +47,25 @@ function updatePipeVisibility(pipeCount) {
     }
 }
 
-function showSection(sectionId, btn) {
-    // Hide all sections
-    document.getElementById('2hour').classList.add('hidden');
-    document.getElementById('daily').classList.add('hidden');
-    document.getElementById('monthly').classList.add('hidden');
-    // Show the selected section
-    document.getElementById(sectionId).classList.remove('hidden');
+// function showSection(sectionId, btn) {
+//     // Hide all sections
+//     document.getElementById('2hour').classList.add('hidden');
+//     document.getElementById('daily').classList.add('hidden');
+//     document.getElementById('monthly').classList.add('hidden');
+//     // Show the selected section
+//     document.getElementById(sectionId).classList.remove('hidden');
 
-    // Reset button colors
-    document.getElementById('btn-2hour').classList.remove('active');
-    document.getElementById('btn-daily').classList.remove('active');
-    document.getElementById('btn-monthly').classList.remove('active');
+//     // Reset button colors
+//     document.getElementById('btn-2hour').classList.remove('active');
+//     document.getElementById('btn-daily').classList.remove('active');
+//     document.getElementById('btn-monthly').classList.remove('active');
 
-    // Set the clicked button to active (green)
-    btn.classList.add('active');
+//     // Set the clicked button to active (green)
+//     btn.classList.add('active');
 
-    // Show the submit button
-    document.getElementById('submit-container').classList.remove('hidden');
-}
+//     // Show the submit button
+//     document.getElementById('submit-container').classList.remove('hidden');
+// }
 function goBack() {
     window.history.back();
 }

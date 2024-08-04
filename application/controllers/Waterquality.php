@@ -81,7 +81,9 @@ class Waterquality extends CI_Controller {
                 'pipe3_raw_bulkmeter_id' => $this->input->post('pipe3_raw_bulkmeter_id'),
                 'pipe3_raw_bulkmeter_reading' => $this->input->post('pipe3_raw_bulkmeter_reading'),
                 'branchID' => $branch_id,
-                'branchName' => $branch_name
+                'branchName' => $branch_name,
+                'formNo' => $this->input->post('form_type')
+
             );
             
 

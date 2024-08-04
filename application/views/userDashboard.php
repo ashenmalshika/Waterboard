@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Water Quality Data Entry</title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/userDashboard.css') ?>">
-</head>
+ </head>
 <body>
         <?php
         // Access session data
@@ -34,15 +34,24 @@
 
                 <!-- Hidden inputs for branch details -->
                 <input type="hidden" name="branch_id" value="<?php echo htmlspecialchars($branch_id); ?>">
-                <input type="hidden" name="branch_name" value="<?php echo htmlspecialchars($branch_name); ?>">
-
+                <input type="hidden" name="branch_name" value="<?php echo htmlspecialchars($branch_name); ?>">     
+            </div>
+            <label >
+                    Select the Correct Form :
+                </label><br>
+            <div class="form-selection-container">
+                
+                <label>
+                    <input type="radio" name="form_type" value="1" onclick="showSection('2hour')"> Two Hour Form
+                </label>
+                <label>
+                    <input type="radio" name="form_type" value="2" onclick="showSection('daily')"> Per Day Form
+                </label>
+                <label>
+                    <input type="radio" name="form_type" value="3" onclick="showSection('monthly')"> Per Month Form
+                </label>
             </div>
 
-            <div class="button-container">
-                <button type="button" id="btn-2hour" class="form-selection-button" onclick="showSection('2hour', this)">2 Hour Form</button>
-                <button type="button" id="btn-daily" class="form-selection-button" onclick="showSection('daily', this)">Per Day Form</button>
-                <button type="button" id="btn-monthly" class="form-selection-button" onclick="showSection('monthly', this)">Per Month Form</button>
-            </div>
 
             <div id="2hour" class="section hidden">
                 <div class="section">
@@ -309,6 +318,7 @@
     </div>
 
     <script src="<?php echo base_url('assets/javascript/userDashboard.js'); ?>"></script>
+
 
 </body>
 </html>
