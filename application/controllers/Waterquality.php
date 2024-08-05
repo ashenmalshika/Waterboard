@@ -5,6 +5,9 @@ class Waterquality extends CI_Controller {
 
 	public function addDataToDatabase()
 	{
+        // Set the timezone to Sri Lanka
+        date_default_timezone_set('Asia/Colombo');
+
         $this->form_validation->set_rules('date', 'Date', 'required');
         $this->form_validation->set_rules('time', 'Time', 'required');
 
@@ -82,8 +85,8 @@ class Waterquality extends CI_Controller {
                 'pipe3_raw_bulkmeter_reading' => $this->input->post('pipe3_raw_bulkmeter_reading'),
                 'branchID' => $branch_id,
                 'branchName' => $branch_name,
-                'formNo' => $this->input->post('form_type')
-
+                'formNo' => $this->input->post('form_type'),
+                'dataInsertedDate' => date('Y-m-d H:i:s')
             );
             
 
