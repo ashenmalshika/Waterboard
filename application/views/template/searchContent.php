@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="col-12" style='margin-top: 15px'>   
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Details of All Sessions</h3>
+                            <h3 class="card-title">Details of All Filled Forms</h3>
                             <div class="float-right" style="display: flex;">
                                     <input type="text" id="searchInput" placeholder="Search..." style="margin-right: 5px;">
                                     <button class='btn btn-info btn-sm' onclick="searchTable()" type="button">Search</button>

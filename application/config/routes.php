@@ -58,3 +58,5 @@ $route['fillform'] = 'Welcome/userDashboard';
 $route['addData'] = 'Waterquality/addDataToDatabase';
 $route['adminDashboard'] = 'Welcome/adminDashboard';
 $route['home'] = 'Dashboard/home';
+$route['graphs'] = 'Dashboard/graphs';
+$route['chartOne'] = 'Dashboard/monthchart';
