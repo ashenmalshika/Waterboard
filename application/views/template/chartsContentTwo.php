@@ -163,7 +163,7 @@ h4{
         </section>
 
         <section class="content" id="chartContainer" style="display: none;">
-            <br><h4>Diesel Consumption(L)</h4><br>
+            <br><h4>Electricity Consumption (kwh)</h4><br>
             <canvas id="dieselChart"></canvas>
         </section><br>
         <section class="error" id="errorContainer" >
@@ -209,7 +209,7 @@ function searchData() {
 
         // AJAX request to fetch data from the server
         $.ajax({
-            url: '<?= base_url("Dashboard/fetch_data") ?>',
+            url: '<?= base_url("Dashboard/fetch_electricity_data") ?>',
             type: 'POST',
             data: {date: searchDate},
             dataType: 'json',
@@ -218,21 +218,19 @@ function searchData() {
                     // Show the chart container and update the chart
                     document.getElementById('chartContainer').style.display = 'block';
                     document.getElementById('output').innerText = ''; // Clear any previous messages
-                    updateChart(response.branchNames, response.dieselValues);
+                    updateChart(response.branchNames, response.unitValues);
                 } else {
                     // No data found, hide the chart and show the message
                     document.getElementById('chartContainer').style.display = 'none';
                     document.getElementById('errorContainer').style.display = 'block';
-                    showError('Diesel Consumption Data not found for the selected month and year.');
-
+                    showError('Electricity Consumption Data not found for the selected month and year.');
                 }
             },
             error: function(xhr, status, error) {
                 // Hide the chart and clear messages if the fetch fails
                 document.getElementById('chartContainer').style.display = 'none';
                 document.getElementById('errorContainer').style.display = 'block';
-                showError('Diesel Consumption Data not found for the selected month and year.');
- // No error message needed
+                showError('Electricity Consumption Data not found for the selected month and year.');
             }
         });
     } else {
@@ -248,44 +246,36 @@ let dieselChart;
 
 function initializeChart() {
     const ctx = document.getElementById('dieselChart').getContext('2d');
-dieselChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: [],
-        datasets: [{
-            label: 'Diesel Usage',
-            data: [],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        maintainAspectRatio: true,
-        scales: {
-            y: {
-                beginAtZero: true,
-                suggestedMin: 0, // Suggests the minimum value to start at 0
-                min: 0,          // Forces the minimum value to be 0
-                ticks: {
-                    callback: function(value) {
-                        return value.toFixed(0); // Ensure no fractional values
-                    }
+    dieselChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Electricity Usage',
+                data: [],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
         }
-    }
-});
-
-
+    });
 }
 
 // Function to update the chart with new data
-function updateChart(branchNames, dieselValues) {
+function updateChart(branchNames, unitValues) {
     dieselChart.data.labels = branchNames;
-    dieselChart.data.datasets[0].data = dieselValues;
+    dieselChart.data.datasets[0].data = unitValues;
     dieselChart.update();
 }
+
 function showError(message) {
     const errorContainer = document.getElementById('errorContainer');
     const output = document.getElementById('output');

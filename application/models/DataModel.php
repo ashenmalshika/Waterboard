@@ -10,43 +10,53 @@ class DataModel extends CI_Model {
         return $query->result();
     }
     public function get_unit_by_date($date) {
-        // Parse the date to extract the year and month
-        $year = date('Y', strtotime($date));
-        $month = date('m', strtotime($date));
-    
-        // Prepare the current month date in 'YYYY-MM' format
-        $currentMonth = "$year-$month";
-    
-        // Prepare the previous month date in 'YYYY-MM' format
+        // Set current and previous month in 'YYYY-MM' format
+        $currentMonth = $date;
         $previousMonth = date('Y-m', strtotime("-1 month", strtotime($currentMonth)));
     
-        // Query to sum the cebreading value for the current month
-        $this->db->select_sum('cebreading');
-        $this->db->like('date', $currentMonth, 'after'); // Matches 'YYYY-MM%' format
-        $this->db->where('formNo', 3); // Assuming formNo = 3 is a condition
-        $currentQuery = $this->db->get('waterqualitydata');
-        $currentResult = $currentQuery->row();
+        // Query to get data within the date range
+        $this->db->select('branchName, ceb_reading, date');
+        $this->db->from('waterqualitydata');
+        $this->db->where('date >=', $previousMonth . '-01');
+        $this->db->where('date <=', date("Y-m-t", strtotime($currentMonth))); // Get last day of the month
+        $this->db->order_by('branchName, date');
     
-        // Query to sum the cebreading value for the previous month
-        $this->db->select_sum('cebreading');
-        $this->db->like('date', $previousMonth, 'after'); // Matches 'YYYY-MM%' format
-        $this->db->where('formNo', 3); // Assuming formNo = 3 is a condition
-        $previousQuery = $this->db->get('waterqualitydata');
-        $previousResult = $previousQuery->row();
+        $query = $this->db->get();
     
-        // Check if both values are available
-        if ($currentResult && $previousResult) {
-            $currentReading = $currentResult->cebreading;
-            $previousReading = $previousResult->cebreading;
+        $result = array();
+        foreach ($query->result() as $row) {
+            $branchName = $row->branchName;
+            $cebReading = $row->ceb_reading;
+            $date = $row->date;
     
-            // Calculate the unit value (difference between current and previous month readings)
-            $unitValue = $currentReading - $previousReading;
+            if (!isset($result[$branchName])) {
+                $result[$branchName] = array(
+                    'current' => null,
+                    'previous' => null,
+                );
+            }
     
-            return $unitValue;
-        } else {
-            // Handle the case where data is missing for either month
-            return null; // Or return 0, an error message, or handle it as needed
+            if (substr($date, 0, 7) == $currentMonth) {
+                $result[$branchName]['current'] = $cebReading;
+            } elseif (substr($date, 0, 7) == $previousMonth) {
+                $result[$branchName]['previous'] = $cebReading;
+            }
         }
+    
+        $finalResult = array();
+        foreach ($result as $branchName => $readings) {
+            if ($readings['current'] !== null && $readings['previous'] !== null) {
+                $unitValue = $readings['current'] - $readings['previous'];
+                $finalResult[] = array(
+                    'branchName' => $branchName,
+                    'unitValue' => $unitValue,
+                );
+            }
+        }
+    
+        return $finalResult;
     }
+    
+    
     
 }

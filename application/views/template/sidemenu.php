@@ -80,13 +80,13 @@
               <li class="nav-item">
                 <a href="<?php echo base_url('chartOne');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View Monthly Data</p>
+                  <p>Diesel Consumption</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url('chartOne');?>" class="nav-link">
+                <a href="<?php echo base_url('chartTwo');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <p>Electricity Consumption</p>
                 </a>
               </li>
               <li class="nav-item">
