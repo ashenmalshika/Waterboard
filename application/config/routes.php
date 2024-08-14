@@ -61,4 +61,5 @@ $route['home'] = 'Dashboard/home';
 $route['graphs'] = 'Dashboard/graphs';
 $route['chartOne'] = 'Dashboard/monthchart';
 $route['chartTwo'] = 'Dashboard/electricityChart';
+$route['chartThree'] = 'Dashboard/chemicalUsageChart';
 $route['electricityData'] = 'Dashboard/fetch_electricity_data';

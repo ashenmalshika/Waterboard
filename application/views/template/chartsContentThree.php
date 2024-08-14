@@ -20,7 +20,7 @@
     background-color: #d9d9d9;
     padding: 20px;
     border-radius: 8px;
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -138,7 +138,7 @@ h4{
     <div class="content-wrapper">
         <br>
         <section class="content-header">
-            <label for="yearDropdown">Check Diesel Consumption of Different plants</label><br>
+            <label for="yearDropdown">Check Chemical Usage of selected plant</label><br>
             <label for="yearDropdown">Select Year:</label>
             <select id="yearDropdown"></select>
 
@@ -158,12 +158,31 @@ h4{
                 <option value="12">December</option>
             </select>
 
+            <label for="plantDropdown">Select Plant:</label>
+            <select id="plantDropdown">
+                <option value="415168">Malimbada Old</option>
+                <option value="466192">Malimbada New</option>
+                <option value="661055">Hallala Old</option>
+                <option value="290645">Hallala New</option>
+                <option value="540962">Katuwangoda</option>
+                <option value="595956">Akuressa</option>
+                <option value="323107">Nadugala</option>
+                <option value="915959">Pitabaddara</option>
+                <option value="548682">Makandura</option>
+                <option value="998709">Radampala</option>
+                <option value="999864">Thihagoda</option>
+                <option value="522842">Hakmana</option>
+                <option value="136679">Karagoda Uyangoda</option>
+                <option value="674107">Deniyaya</option>
+            </select>
+
+
             <button onclick="searchData()">Search</button>
             
         </section>
 
         <section class="content" id="chartContainer" style="display:none">
-            <br><h4>Diesel Consumption(L)</h4><br>
+            <br><h4>Chemical Usage(Kg)</h4><br>
             <canvas id="dieselChart"></canvas>
         </section><br>
         <section class="error" id="errorContainer" >
@@ -178,8 +197,7 @@ h4{
 
 <script src="<?php echo base_url()?>assets/dist/js/adminlte.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-<script>
-// Initialize the year dropdown when the page loads
+<script>// Initialize the year dropdown when the page loads
 window.onload = function() {
     populateYearDropdown();
     initializeChart();
@@ -199,90 +217,198 @@ function populateYearDropdown() {
     }
 }
 
-// Function to search data based on selected month and year
 function searchData() {
     const selectedYear = document.getElementById('yearDropdown').value;
     const selectedMonth = document.getElementById('monthDropdown').value;
+    const selectedPlant = document.getElementById('plantDropdown').value;
 
-    if (selectedYear && selectedMonth) {
+    if (selectedYear && selectedMonth && selectedPlant) {
         const searchDate = `${selectedYear}-${selectedMonth}`;
 
         // AJAX request to fetch data from the server
         $.ajax({
-            url: '<?= base_url("Dashboard/fetch_data") ?>',
+            url: '<?= base_url("Dashboard/chemical_usage_data") ?>',
             type: 'POST',
-            data: {date: searchDate},
+            data: {
+                date: searchDate,
+                plantId: selectedPlant
+            },
             dataType: 'json',
             success: function(response) {
-                if (response.branchNames.length > 0) {
+                if (response.status === 'success') {
                     // Show the chart container and update the chart
                     document.getElementById('chartContainer').style.display = 'block';
                     document.getElementById('output').innerText = ''; // Clear any previous messages
-                    updateChart(response.branchNames, response.dieselValues);
+
+                    updateChart(response.dates, response.alum);
                 } else {
                     // No data found, hide the chart and show the message
                     document.getElementById('chartContainer').style.display = 'none';
                     document.getElementById('errorContainer').style.display = 'block';
-                    showError('Diesel Consumption Data not found for the selected month and year.');
-
+                    showError(response.message);
                 }
             },
             error: function(xhr, status, error) {
                 // Hide the chart and clear messages if the fetch fails
                 document.getElementById('chartContainer').style.display = 'none';
                 document.getElementById('errorContainer').style.display = 'block';
-                showError('Diesel Consumption Data not found for the selected month and year.');
- // No error message needed
+                showError('Chemical Usage Data not found for the selected month and year.');
             }
         });
     } else {
-        // If no year or month is selected, show an appropriate message
+        // If no year, month, or plant is selected, show an appropriate message
         document.getElementById('errorContainer').style.display = 'block';
-        document.getElementById('output').innerText = 'Please select both a month and a year.';
+        document.getElementById('output').innerText = 'Please select a plant, month, and year.';
         document.getElementById('chartContainer').style.display = 'none';
     }
 }
 
-// Initialize an empty chart
+
+
+function searchData() {
+    const selectedYear = document.getElementById('yearDropdown').value;
+    const selectedMonth = document.getElementById('monthDropdown').value;
+    const selectedPlant = document.getElementById('plantDropdown').value;
+
+    if (selectedYear && selectedMonth && selectedPlant) {
+        const searchDate = `${selectedYear}-${selectedMonth}`;
+
+        // AJAX request to fetch data from the server
+        $.ajax({
+            url: '<?= base_url("Dashboard/chemical_usage_data") ?>',
+            type: 'POST',
+            data: {
+                date: searchDate,
+                plantId: selectedPlant
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    // Show the chart container and update the chart
+                    document.getElementById('chartContainer').style.display = 'block';
+                    document.getElementById('output').innerText = ''; // Clear any previous messages
+
+                    updateChart(response.dates, response.alum, response.pacl, response.lime, response.polymer, response.gas_chlorine, response.salt, response.bleaching_powder);
+                } else {
+                    // No data found, hide the chart and show the message
+                    document.getElementById('chartContainer').style.display = 'none';
+                    document.getElementById('errorContainer').style.display = 'block';
+                    showError(response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                // Hide the chart and clear messages if the fetch fails
+                document.getElementById('chartContainer').style.display = 'none';
+                document.getElementById('errorContainer').style.display = 'block';
+                showError('Chemical Usage Data not found for the selected month and year.');
+            }
+        });
+    } else {
+        // If no year, month, or plant is selected, show an appropriate message
+        document.getElementById('errorContainer').style.display = 'block';
+        document.getElementById('output').innerText = 'Please select a plant, month, and year.';
+        document.getElementById('chartContainer').style.display = 'none';
+    }
+}
+
+// Initialize an empty stacked chart
 let dieselChart;
 
 function initializeChart() {
     const ctx = document.getElementById('dieselChart').getContext('2d');
     dieselChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: [],
-        datasets: [{
-            label: 'Diesel Usage',
-            data: [],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1,
-            maxBarThickness: 80
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
-                min: 0,
-                suggestedMin: 0
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [
+                {
+                    label: 'Alum',
+                    data: [],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    maxBarThickness: 80
+                },
+                {
+                    label: 'PACL',
+                    data: [],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    maxBarThickness: 80
+                },
+                {
+                    label: 'Lime',
+                    data: [],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1,
+                    maxBarThickness: 80
+                },
+                {
+                    label: 'Polymer',
+                    data: [],
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1,
+                    maxBarThickness: 80
+                },
+                {
+                    label: 'Gas Chlorine',
+                    data: [],
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1,
+                    maxBarThickness: 80
+                },
+                {
+                    label: 'Salt',
+                    data: [],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    maxBarThickness: 80
+                },
+                {
+                    label: 'Bleaching Powder',
+                    data: [],
+                    backgroundColor: 'rgba(201, 203, 207, 0.2)',
+                    borderColor: 'rgba(201, 203, 207, 1)',
+                    borderWidth: 1,
+                    maxBarThickness: 80
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    stacked: true, // Enable stacking
+                    min: 0
+                },
+                x: {
+                    stacked: true // Enable stacking
+                }
             }
         }
-    }
-});
-
-
-
+    });
 }
 
 // Function to update the chart with new data
-function updateChart(branchNames, dieselValues) {
-    dieselChart.data.labels = branchNames;
-    dieselChart.data.datasets[0].data = dieselValues;
-    dieselChart.options.scales.y.min = 0;
+function updateChart(dates, alum, pacl, lime, polymer, gas_chlorine, salt, bleaching_powder) {
+    dieselChart.data.labels = dates;
+    dieselChart.data.datasets[0].data = alum;
+    dieselChart.data.datasets[1].data = pacl;
+    dieselChart.data.datasets[2].data = lime;
+    dieselChart.data.datasets[3].data = polymer;
+    dieselChart.data.datasets[4].data = gas_chlorine;
+    dieselChart.data.datasets[5].data = salt;
+    dieselChart.data.datasets[6].data = bleaching_powder;
+
     dieselChart.update();
 }
+
+// Function to display error messages and hide after a delay
 function showError(message) {
     const errorContainer = document.getElementById('errorContainer');
     const output = document.getElementById('output');
@@ -298,8 +424,6 @@ function showError(message) {
         errorContainer.style.display = 'none';
     }, 5000);
 }
-
-
 </script>
 </body>
 

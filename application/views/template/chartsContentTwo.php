@@ -138,7 +138,7 @@ h4{
     <div class="content-wrapper">
         <br>
         <section class="content-header">
-            <label for="yearDropdown">Check Power Consumption of Different plants</label><br>
+            <label for="yearDropdown">Check Electricity Consumption of Different plants</label><br>
             <label for="yearDropdown">Select Year:</label>
             <select id="yearDropdown"></select>
 
@@ -256,7 +256,7 @@ function initializeChart() {
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1,
-            maxBarThickness: 60
+            maxBarThickness: 80
         }]
     },
     options: {

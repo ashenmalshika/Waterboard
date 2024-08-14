@@ -126,6 +126,24 @@ class Dashboard extends CI_Controller {
         $this->load->view('template/chartsContentTwo');
         $this->load->view('template/footer');
     }
+    public function chemicalUsageChart(){
+        if (!$this->session->userdata('user_id')) {
+            redirect('Welcome');
+        }
+
+        // Set headers to prevent caching
+        $this->output->set_header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
+        $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
+        $this->output->set_header('Pragma: no-cache');
+
+
+        $this->load->view('template/header');
+        $this->load->view('template/topmenu');
+        $this->load->view('template/sidemenu');
+        $this->load->view('template/chartsContentThree');
+        $this->load->view('template/footer');
+    }
     public function fetch_data() {
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $date = $this->input->post('date'); // Expected format: YYYY-MM
@@ -178,6 +196,55 @@ class Dashboard extends CI_Controller {
             ]);
         }
     }
+    public function chemical_usage_data() {
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            $date = $this->input->post('date'); // Expected format: YYYY-MM
+            $plantId = $this->input->post('plantId');
+    
+            // Fetch data from the model
+            $data = $this->DataModel->getChemicalUsage($date, $plantId);
+    
+            if (!empty($data)) {
+                // Prepare arrays for chart data
+                $dates = [];
+                $alum = [];
+                $pacl = [];
+                $lime = [];
+                $polymer = [];
+                $gas_chlorine = [];
+                $salt = [];
+                $bleaching_powder = [];
+    
+                // Loop through the data and prepare arrays
+                foreach ($data as $row) {
+                    $dates[] = $row->date;
+                    $alum[] = $row->alum;
+                    $pacl[] = $row->pacl;
+                    $lime[] = $row->lime;
+                    $polymer[] = $row->polymer;
+                    $gas_chlorine[] = $row->gas_chlorine;
+                    $salt[] = $row->salt;
+                    $bleaching_powder[] = $row->bleaching_powder;
+                }
+    
+                // Return data as JSON for charting
+                echo json_encode([
+                    'status' => 'success',
+                    'dates' => $dates,
+                    'alum' => $alum,
+                    'pacl' => $pacl,
+                    'lime' => $lime,
+                    'polymer' => $polymer,
+                    'gas_chlorine' => $gas_chlorine,
+                    'salt' => $salt,
+                    'bleaching_powder' => $bleaching_powder
+                ]);
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'No data found for the selected month and year.']);
+            }    
+        }
+    }
+    
     
     }
 
