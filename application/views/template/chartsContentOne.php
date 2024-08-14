@@ -23,6 +23,8 @@
     max-width: 600px;
     margin: 20px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-color:black;
 }
 
 .content-header label {
@@ -134,7 +136,7 @@ h4{
     </style>
 </head>
 <body>
-<div class="wrapper">
+
     <div class="content-wrapper">
         <br>
         <section class="content-header">
@@ -170,13 +172,13 @@ h4{
             <p id="output"></p>
         </section>
     </div>
-</div>
+
 
 <!-- Include necessary JS libraries -->
 <script src="<?php echo base_url()?>assets/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<script src="<?php echo base_url()?>assets/dist/js/adminlte.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <script>
 // Initialize the year dropdown when the page loads

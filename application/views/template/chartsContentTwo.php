@@ -176,7 +176,7 @@ h4{
 <script src="<?php echo base_url()?>assets/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-<script src="<?php echo base_url()?>assets/dist/js/adminlte.min.js"></script>
+
 
 <script>
 // Initialize the year dropdown when the page loads
