@@ -175,7 +175,7 @@ h4{
 <!-- Include necessary JS libraries -->
 <script src="<?php echo base_url()?>assets/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/chart.js/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <script src="<?php echo base_url()?>assets/dist/js/adminlte.min.js"></script>
 
 <script>
@@ -247,26 +247,29 @@ let dieselChart;
 function initializeChart() {
     const ctx = document.getElementById('dieselChart').getContext('2d');
     dieselChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [],
-            datasets: [{
-                label: 'Electricity Usage',
-                data: [],
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            maintainAspectRatio: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+    type: 'bar',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Electricity Usage',
+            data: [],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            maxBarThickness: 60
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                min: 0,
+                suggestedMin: 0
             }
         }
-    });
+    }
+});
+
 }
 
 // Function to update the chart with new data

@@ -162,7 +162,7 @@ h4{
             
         </section>
 
-        <section class="content" id="chartContainer" style="display: none;">
+        <section class="content" id="chartContainer" style="display:none">
             <br><h4>Diesel Consumption(L)</h4><br>
             <canvas id="dieselChart"></canvas>
         </section><br>
@@ -175,9 +175,9 @@ h4{
 <!-- Include necessary JS libraries -->
 <script src="<?php echo base_url()?>assets/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/chart.js/Chart.min.js"></script>
-<script src="<?php echo base_url()?>assets/dist/js/adminlte.min.js"></script>
 
+<script src="<?php echo base_url()?>assets/dist/js/adminlte.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <script>
 // Initialize the year dropdown when the page loads
 window.onload = function() {
@@ -248,7 +248,7 @@ let dieselChart;
 
 function initializeChart() {
     const ctx = document.getElementById('dieselChart').getContext('2d');
-dieselChart = new Chart(ctx, {
+    dieselChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [],
@@ -257,25 +257,21 @@ dieselChart = new Chart(ctx, {
             data: [],
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
+            borderWidth: 1,
+            maxBarThickness: 60
         }]
     },
     options: {
-        maintainAspectRatio: true,
         scales: {
             y: {
                 beginAtZero: true,
-                suggestedMin: 0, // Suggests the minimum value to start at 0
-                min: 0,          // Forces the minimum value to be 0
-                ticks: {
-                    callback: function(value) {
-                        return value.toFixed(0); // Ensure no fractional values
-                    }
-                }
+                min: 0,
+                suggestedMin: 0
             }
         }
     }
 });
+
 
 
 }
@@ -284,6 +280,7 @@ dieselChart = new Chart(ctx, {
 function updateChart(branchNames, dieselValues) {
     dieselChart.data.labels = branchNames;
     dieselChart.data.datasets[0].data = dieselValues;
+    dieselChart.options.scales.y.min = 0;
     dieselChart.update();
 }
 function showError(message) {
