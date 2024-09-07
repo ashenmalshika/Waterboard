@@ -25,12 +25,12 @@
             <?php echo validation_errors(); ?>
         </div>
         
-        
+        <form id="dataEntryForm" action="<?php echo site_url('addData'); ?>" method="post">
             <div class="section">
-                <!-- <label for="date">Date:</label>
+                <label for="date">Date:</label>
                 <input type="date" id="date" name="date" required>
                 <label for="time">Time:</label>
-                <input type="time" id="time" name="time" required> -->
+                <input type="time" id="time" name="time" required>
 
                 <!-- Hidden inputs for branch details -->
                 <input type="hidden" name="branch_id" value="<?php echo htmlspecialchars($branch_id); ?>">
@@ -50,10 +50,7 @@
                 <label>
                     <input type="radio" name="form_type" value="3" onclick="showSection('monthly')"> Per Month Form
                 </label>
-                <label>
-                    <input type="radio" name="form_type" value="4" onclick="showSection('8hour')"> Eight Hour Form
-                </label>
-            </div><br>
+            </div>
 
 
             <div id="2hour" class="section hidden">
@@ -291,28 +288,6 @@
                     <input type="number" step="0.01" id="bleaching_powder" name="bleaching_powder" >
                 </div>
 
-                
-            </div>
-            <form id="dataEntryForm" action="<?php echo site_url('addMonthlyData'); ?>" method="post">
-                <div id="monthly" class="section hidden">
-                    <div class="section">
-                    <label for="date">Year and Month:</label>
-                    <input type="month" id="date" name="date" required>
-
-                        <h3>Power Consumption</h3>
-                        <label for="diesel">Diesel (L) :</label>
-                        <input type="number" step="0.01" id="diesel" name="diesel" >
-                        
-                        <label for="ceb_reading">CEB Reading :</label>
-                        <input type="number" step="1" id="ceb_reading" name="ceb_reading" >
-                    </div>
-                    <div class="button-container" id="submit-container">
-                        <button type="submit">Submit</button>
-                    </div>
-                </div>
-            </form>
-
-            <div id="8hour" class="section hidden">
                 <div class="section">
                     <h3>Water Quality</h3>
                     <div class="flex-row">
@@ -325,8 +300,21 @@
                 </div>
             </div>
 
-            
-        
+            <div id="monthly" class="section hidden">
+                <div class="section">
+                    <h3>Power Consumption</h3>
+                    <label for="diesel">Diesel (L) :</label>
+                    <input type="number" step="0.01" id="diesel" name="diesel" >
+                    
+                    <label for="ceb_reading">CEB Reading :</label>
+                    <input type="number" step="1" id="ceb_reading" name="ceb_reading" >
+                </div>
+            </div>
+
+            <div class="button-container hidden" id="submit-container">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
     </div>
 
     <script src="<?php echo base_url('assets/javascript/userDashboard.js'); ?>"></script>

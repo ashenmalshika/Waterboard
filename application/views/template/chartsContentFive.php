@@ -136,11 +136,11 @@ h4{
     </style>
 </head>
 <body>
-<div class="wrapper">
+
     <div class="content-wrapper">
         <br>
         <section class="content-header">
-            <label for="yearDropdown">Check Electricity Consumption of Different plants</label><br>
+            <label for="yearDropdown">Check Jar Test of Different plants</label><br>
             <label for="yearDropdown">Select Year:</label>
             <select id="yearDropdown"></select>
 
@@ -164,22 +164,22 @@ h4{
             
         </section>
 
-        <section class="content" id="chartContainer" style="display: none;">
-            <br><h4>Electricity Consumption (kwh)</h4><br>
+        <section class="content" id="chartContainer" style="display:none">
+            <br><h4>Jar Test (mg/L)</h4><br>
             <canvas id="dieselChart"></canvas>
         </section><br>
         <section class="error" id="errorContainer" >
             <p id="output"></p>
         </section>
     </div>
-</div>
+
 
 <!-- Include necessary JS libraries -->
 <script src="<?php echo base_url()?>assets/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-
-
 <script>
 // Initialize the year dropdown when the page loads
 window.onload = function() {
@@ -211,28 +211,31 @@ function searchData() {
 
         // AJAX request to fetch data from the server
         $.ajax({
-            url: '<?= base_url("Dashboard/fetch_electricity_data") ?>',
+            url: '<?= base_url("Dashboard/fetch_jar_data") ?>',
             type: 'POST',
             data: {date: searchDate},
             dataType: 'json',
             success: function(response) {
                 if (response.branchNames.length > 0) {
                     // Show the chart container and update the chart
+                    console.log(response.values);
                     document.getElementById('chartContainer').style.display = 'block';
                     document.getElementById('output').innerText = ''; // Clear any previous messages
-                    updateChart(response.branchNames, response.unitValues);
+                    updateChart(response.branchNames, response.values);
                 } else {
                     // No data found, hide the chart and show the message
                     document.getElementById('chartContainer').style.display = 'none';
                     document.getElementById('errorContainer').style.display = 'block';
-                    showError('Electricity Consumption Data not found for the selected month and year.');
+                    showError('Jar Test Data not found for the selected month and year.');
+
                 }
             },
             error: function(xhr, status, error) {
                 // Hide the chart and clear messages if the fetch fails
                 document.getElementById('chartContainer').style.display = 'none';
                 document.getElementById('errorContainer').style.display = 'block';
-                showError('Electricity Consumption Data not found for the selected month and year.');
+                showError('Jar Test Data not found for the selected month and year.');
+ // No error message needed
             }
         });
     } else {
@@ -253,7 +256,7 @@ function initializeChart() {
     data: {
         labels: [],
         datasets: [{
-            label: 'Electricity Usage',
+            label: 'Jar Test',
             data: [],
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
@@ -272,15 +275,17 @@ function initializeChart() {
     }
 });
 
+
+
 }
 
 // Function to update the chart with new data
-function updateChart(branchNames, unitValues) {
+function updateChart(branchNames, values) {
     dieselChart.data.labels = branchNames;
-    dieselChart.data.datasets[0].data = unitValues;
+    dieselChart.data.datasets[0].data = values;
+    dieselChart.options.scales.y.min = 0;
     dieselChart.update();
 }
-
 function showError(message) {
     const errorContainer = document.getElementById('errorContainer');
     const output = document.getElementById('output');

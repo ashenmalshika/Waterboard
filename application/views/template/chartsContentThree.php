@@ -20,9 +20,11 @@
     background-color: #d9d9d9;
     padding: 20px;
     border-radius: 8px;
-    max-width: 800px;
+    max-width: 850px;
     margin: 20px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-color:black;
 }
 
 .content-header label {

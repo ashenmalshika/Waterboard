@@ -112,6 +112,23 @@ class DataModel extends CI_Model {
         $query = $this->db->get('waterqualitydata');
         return $query->result();
     }
+    public function raw_water_turbidity($date, $plantId) {
+        $this->db->select('date, raw_turbidity, time');
+        $this->db->from('waterqualitydata');
+        $this->db->where('formNo', 1);
+        $this->db->where('date', $date); // Assuming the 'date' field is in 'YYYY-MM-DD' format
+        $this->db->where('branchID', $plantId);
     
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    public function jar_data($date) {
+        $this->db->select('branchName, treated_alum_pacl_jar');
+        $this->db->like('date', $date, 'after');
+        $this->db->where('formNo', 2);
+        $query = $this->db->get('waterqualitydata');
+        return $query->result();
+    }
     
 }

@@ -62,4 +62,6 @@ $route['graphs'] = 'Dashboard/graphs';
 $route['chartOne'] = 'Dashboard/monthchart';
 $route['chartTwo'] = 'Dashboard/electricityChart';
 $route['chartThree'] = 'Dashboard/chemicalUsageChart';
+$route['chartFour'] = 'Dashboard/rawWaterChart';
+$route['chartFive'] = 'Dashboard/jarTestChart';
 $route['electricityData'] = 'Dashboard/fetch_electricity_data';

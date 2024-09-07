@@ -3,6 +3,7 @@ function showSection(sectionId) {
     document.getElementById('2hour').classList.add('hidden');
     document.getElementById('daily').classList.add('hidden');
     document.getElementById('monthly').classList.add('hidden');
+    document.getElementById('8hour').classList.add('hidden');
 
     // Show the selected section
     document.getElementById(sectionId).classList.remove('hidden');
@@ -16,7 +17,23 @@ document.addEventListener('DOMContentLoaded', function() {
     var radios = document.querySelectorAll('input[type="radio"][name="form_type"]');
     radios.forEach(radio => {
         radio.addEventListener('click', function() {
-            showSection(this.value === '1' ? '2hour' : this.value === '2' ? 'daily' : 'monthly');
+            // Use a switch case for clarity and correct section mapping
+            let sectionToShow;
+            switch (this.value) {
+                case '1':
+                    sectionToShow = '2hour';
+                    break;
+                case '2':
+                    sectionToShow = 'daily';
+                    break;
+                case '3':
+                    sectionToShow = 'monthly';
+                    break;
+                case '4':
+                    sectionToShow = '8hour';
+                    break;
+            }
+            showSection(sectionToShow);
         });
     });
 });
