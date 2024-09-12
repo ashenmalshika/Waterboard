@@ -36,13 +36,13 @@
                     <input type="radio" name="form_type" value="1" onclick="showSection('2hour')"> Two Hour Form
                 </label>
                 <label>
+                    <input type="radio" name="form_type" value="4" onclick="showSection('8hour')"> Eight Hour Form
+                </label>
+                <label>
                     <input type="radio" name="form_type" value="2" onclick="showSection('daily')"> Per Day Form
                 </label>
                 <label>
                     <input type="radio" name="form_type" value="3" onclick="showSection('monthly')"> Per Month Form
-                </label>
-                <label>
-                    <input type="radio" name="form_type" value="4" onclick="showSection('8hour')"> Eight Hour Form
                 </label>
             </div><br>
 
