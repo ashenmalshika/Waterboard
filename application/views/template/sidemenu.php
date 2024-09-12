@@ -58,16 +58,6 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href=<?php echo base_url('graphs');?> class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Graphs
-                <span class="badge badge-info right"></span>
-              </p>
-            </a>
-          </li>
-
           <li class="nav-item ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>

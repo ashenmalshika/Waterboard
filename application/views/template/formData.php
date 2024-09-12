@@ -21,13 +21,13 @@
             <div class="section">
                 <label for="date">Date:</label>
                 <input type="date" id="date" name="date" value="<?php echo $sessions->date; ?>" readonly>
-                <label for="time">Time:</label>
-                <input type="time" id="time" name="time" value="<?php echo $sessions->time; ?>" readonly>
             </div>
 
             <?php if ($sessions->formNo == 1): ?>
             <div  >
                 <div class="section">
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" value="<?php echo $sessions->time; ?>" readonly>
                     <h3>Water Quality</h3>
                     <div class="flex-row">
                         <div class="column">
@@ -107,34 +107,13 @@
             <div >
                 <div class="section">
                     <h3>Production</h3>
-                    <!-- Details for Pipe 1 -->
+                    <!-- Details for Raw Water -->
                     <div id="pipe1_details" class="unique-card">
-                        <h4>PIPE 1</h4>
+                        <h4>Raw Water</h4>
                         <div class="unique-column">
+                                                   
                             <div>
-                                <h4>Distribution</h4>
-                                <label class="unique-label" for="pipe1_distribution_diameter">Diameter:</label>
-                                <input class="unique-input" type="number" id="pipe1_distribution_diameter" name="pipe1_distribution_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_distribution_diameter; ?>" readonly>
-
-                                <label class="unique-label" for="pipe1_bulkmeter_id">Bulk Meter ID:</label>
-                                <input class="unique-input" type="text" id="pipe1_bulkmeter_id" name="pipe1_bulkmeter_id" value="<?php echo $sessions->pipe1_bulkmeter_id; ?>" readonly>
-
-                                <label class="unique-label" for="pipe1_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="number" id="pipe1_bulkmeter_reading" name="pipe1_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_bulkmeter_reading; ?>" readonly>
-                            </div>
-                            <div>
-                                <h4>Pumping</h4>
-                                <label class="unique-label" for="pipe1_pumping_diameter">Diameter:</label>
-                                <input class="unique-input" type="number" id="pipe1_pumping_diameter" name="pipe1_pumping_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_pumping_diameter; ?>" readonly>
-
-                                <label class="unique-label" for="pipe1_pumping_bulkmeter_id">Bulk Meter ID:</label>
-                                <input class="unique-input" type="text" id="pipe1_pumping_bulkmeter_id" name="pipe1_pumping_bulkmeter_id" value="<?php echo $sessions->pipe1_pumping_bulkmeter_id; ?>" readonly>
-
-                                <label class="unique-label" for="pipe1_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="number" id="pipe1_pumping_bulkmeter_reading" name="pipe1_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_pumping_bulkmeter_reading; ?>" readonly>
-                            </div>
-                            <div>
-                                <h4>Raw Water</h4>
+                                <h4>Pipe 1</h4>
                                 <label class="unique-label" for="pipe1_raw_diameter">Diameter:</label>
                                 <input class="unique-input" type="number" id="pipe1_raw_diameter" name="pipe1_raw_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_raw_diameter; ?>" readonly>
 
@@ -144,27 +123,48 @@
                                 <label class="unique-label" for="pipe1_raw_bulkmeter_reading">Bulk Meter Reading:</label>
                                 <input class="unique-input" type="number" id="pipe1_raw_bulkmeter_reading" name="pipe1_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_raw_bulkmeter_reading; ?>" readonly>
                             </div>
+                            <div>
+                                <h4>Pipe 2</h4>
+                                <label class="unique-label" for="pipe2_raw_diameter">Diameter:</label>
+                                <input class="unique-input" type="number" id="pipe2_raw_diameter" name="pipe2_raw_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_raw_diameter; ?>" readonly>
+
+                                <label class="unique-label" for="pipe2_raw_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe2_raw_bulkmeter_id" name="pipe2_raw_bulkmeter_id" value="<?php echo $sessions->pipe2_raw_bulkmeter_id; ?>" readonly>
+
+                                <label class="unique-label" for="pipe2_raw_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="number" id="pipe2_raw_bulkmeter_reading" name="pipe2_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_raw_bulkmeter_reading; ?>" readonly>
+                            </div>
+                            <div>
+                                <h4>Pipe 3</h4>
+                                <label class="unique-label" for="pipe3_raw_diameter">Diameter:</label>
+                                <input class="unique-input" type="number" id="pipe3_raw_diameter" name="pipe3_raw_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_raw_diameter; ?>" readonly>
+
+                                <label class="unique-label" for="pipe3_raw_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe3_raw_bulkmeter_id" name="pipe3_raw_bulkmeter_id" value="<?php echo $sessions->pipe3_raw_bulkmeter_id; ?>" readonly>
+
+                                <label class="unique-label" for="pipe3_raw_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="number" id="pipe3_raw_bulkmeter_reading" name="pipe3_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_raw_bulkmeter_reading; ?>" readonly>
+                            </div>
                         </div>
                     </div>
 
-
-                    <!-- Details for Pipe 2 -->
                     <div id="pipe2_details" class="unique-card">
-                        <h4>PIPE 2</h4>
+                        <h4>Pumping/Transmission</h4>
                         <div class="unique-column">
                             <div>
-                                <h4>Distribution</h4>
-                                <label class="unique-label" for="pipe2_distribution_diameter">Diameter:</label>
-                                <input class="unique-input" type="number" id="pipe2_distribution_diameter" name="pipe2_distribution_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_distribution_diameter; ?>" readonly>
+                                <h4>Pipe 1</h4>
+                                <label class="unique-label" for="pipe1_pumping_diameter">Diameter:</label>
+                                <input class="unique-input" type="number" id="pipe1_pumping_diameter" name="pipe1_pumping_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_pumping_diameter; ?>" readonly>
 
-                                <label class="unique-label" for="pipe2_bulkmeter_id">Bulk Meter ID:</label>
-                                <input class="unique-input" type="text" id="pipe2_bulkmeter_id" name="pipe2_bulkmeter_id" value="<?php echo $sessions->pipe2_bulkmeter_id; ?>" readonly>
+                                <label class="unique-label" for="pipe1_pumping_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe1_pumping_bulkmeter_id" name="pipe1_pumping_bulkmeter_id" value="<?php echo $sessions->pipe1_pumping_bulkmeter_id; ?>" readonly>
 
-                                <label class="unique-label" for="pipe2_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="number" id="pipe2_bulkmeter_reading" name="pipe2_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_bulkmeter_reading; ?>" readonly>
+                                <label class="unique-label" for="pipe1_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="number" id="pipe1_pumping_bulkmeter_reading" name="pipe1_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_pumping_bulkmeter_reading; ?>" readonly>
                             </div>
+                            
                             <div>
-                                <h4>Pumping</h4>
+                                <h4>Pipe 2</h4>
                                 <label class="unique-label" for="pipe2_pumping_diameter">Diameter:</label>
                                 <input class="unique-input" type="number" id="pipe2_pumping_diameter" name="pipe2_pumping_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_pumping_diameter; ?>" readonly>
 
@@ -175,26 +175,48 @@
                                 <input class="unique-input" type="number" id="pipe2_pumping_bulkmeter_reading" name="pipe2_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_pumping_bulkmeter_reading; ?>" readonly>
                             </div>
                             <div>
-                                <h4>Raw Water</h4>
-                                <label class="unique-label" for="pipe2_raw_diameter">Diameter:</label>
-                                <input class="unique-input" type="number" id="pipe2_raw_diameter" name="pipe2_raw_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_raw_diameter; ?>" readonly>
+                                <h4>Pipe 3</h4>
+                                <label class="unique-label" for="pipe3_pumping_diameter">Diameter:</label>
+                                <input class="unique-input" type="number" id="pipe3_pumping_diameter" name="pipe3_pumping_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_pumping_diameter; ?>" readonly>
 
-                                <label class="unique-label" for="pipe2_raw_bulkmeter_id">Bulk Meter ID:</label>
-                                <input class="unique-input" type="text" id="pipe2_raw_bulkmeter_id" name="pipe2_raw_bulkmeter_id" value="<?php echo $sessions->pipe2_raw_bulkmeter_id; ?>" readonly>
+                                <label class="unique-label" for="pipe3_pumping_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe3_pumping_bulkmeter_id" name="pipe3_pumping_bulkmeter_id" value="<?php echo $sessions->pipe3_pumping_bulkmeter_id; ?>" readonly>
 
-                                <label class="unique-label" for="pipe2_raw_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="number" id="pipe2_raw_bulkmeter_reading" name="pipe2_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_raw_bulkmeter_reading; ?>" readonly>
-                            </div>
+                                <label class="unique-label" for="pipe3_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="number" id="pipe3_pumping_bulkmeter_reading" name="pipe3_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_pumping_bulkmeter_reading; ?>" readonly>
+                            </div>                 
                         </div>
                     </div>
 
 
                     <!-- Details for Pipe 3 -->
                     <div id="pipe3_details" class="unique-card">
-                        <h4>PIPE 3</h4>
+                        <h4>Distribution</h4>
                         <div class="unique-column">
                             <div>
-                                <h4>Distribution</h4>
+                                <h4>Pipe 1</h4>
+                                <label class="unique-label" for="pipe1_distribution_diameter">Diameter:</label>
+                                <input class="unique-input" type="number" id="pipe1_distribution_diameter" name="pipe1_distribution_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_distribution_diameter; ?>" readonly>
+
+                                <label class="unique-label" for="pipe1_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe1_bulkmeter_id" name="pipe1_bulkmeter_id" value="<?php echo $sessions->pipe1_bulkmeter_id; ?>" readonly>
+
+                                <label class="unique-label" for="pipe1_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="number" id="pipe1_bulkmeter_reading" name="pipe1_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe1_bulkmeter_reading; ?>" readonly>
+                            </div>
+                            <div>
+                                <h4>Pipe 2</h4>
+                                <label class="unique-label" for="pipe2_distribution_diameter">Diameter:</label>
+                                <input class="unique-input" type="number" id="pipe2_distribution_diameter" name="pipe2_distribution_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_distribution_diameter; ?>" readonly>
+
+                                <label class="unique-label" for="pipe2_bulkmeter_id">Bulk Meter ID:</label>
+                                <input class="unique-input" type="text" id="pipe2_bulkmeter_id" name="pipe2_bulkmeter_id" value="<?php echo $sessions->pipe2_bulkmeter_id; ?>" readonly>
+
+                                <label class="unique-label" for="pipe2_bulkmeter_reading">Bulk Meter Reading:</label>
+                                <input class="unique-input" type="number" id="pipe2_bulkmeter_reading" name="pipe2_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe2_bulkmeter_reading; ?>" readonly>
+                            </div>
+                            <div>
+                                <h4>Pipe 3</h4>
                                 <label class="unique-label" for="pipe3_distribution_diameter">Diameter:</label>
                                 <input class="unique-input" type="number" id="pipe3_distribution_diameter" name="pipe3_distribution_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_distribution_diameter; ?>" readonly>
 
@@ -204,28 +226,7 @@
                                 <label class="unique-label" for="pipe3_bulkmeter_reading">Bulk Meter Reading:</label>
                                 <input class="unique-input" type="number" id="pipe3_bulkmeter_reading" name="pipe3_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_bulkmeter_reading; ?>" readonly>
                             </div>
-                            <div>
-                                <h4>Pumping</h4>
-                                <label class="unique-label" for="pipe3_pumping_diameter">Diameter:</label>
-                                <input class="unique-input" type="number" id="pipe3_pumping_diameter" name="pipe3_pumping_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_pumping_diameter; ?>" readonly>
-
-                                <label class="unique-label" for="pipe3_pumping_bulkmeter_id">Bulk Meter ID:</label>
-                                <input class="unique-input" type="text" id="pipe3_pumping_bulkmeter_id" name="pipe3_pumping_bulkmeter_id" value="<?php echo $sessions->pipe3_pumping_bulkmeter_id; ?>" readonly>
-
-                                <label class="unique-label" for="pipe3_pumping_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="number" id="pipe3_pumping_bulkmeter_reading" name="pipe3_pumping_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_pumping_bulkmeter_reading; ?>" readonly>
-                            </div>
-                            <div>
-                                <h4>Raw Water</h4>
-                                <label class="unique-label" for="pipe3_raw_diameter">Diameter:</label>
-                                <input class="unique-input" type="number" id="pipe3_raw_diameter" name="pipe3_raw_diameter"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_raw_diameter; ?>" readonly>
-
-                                <label class="unique-label" for="pipe3_raw_bulkmeter_id">Bulk Meter ID:</label>
-                                <input class="unique-input" type="text" id="pipe3_raw_bulkmeter_id" name="pipe3_raw_bulkmeter_id" value="<?php echo $sessions->pipe3_raw_bulkmeter_id; ?>" readonly>
-
-                                <label class="unique-label" for="pipe3_raw_bulkmeter_reading">Bulk Meter Reading:</label>
-                                <input class="unique-input" type="number" id="pipe3_raw_bulkmeter_reading" name="pipe3_raw_bulkmeter_reading"  pattern="\d+" title="Please enter a whole number" value="<?php echo $sessions->pipe3_raw_bulkmeter_reading; ?>" readonly>
-                            </div>
+                                               
                         </div>
                     </div>
 
@@ -256,16 +257,6 @@
                     <input type="number" step="0.01" id="bleaching_powder" name="bleaching_powder" value="<?php echo $sessions->bleaching_powder; ?>" readonly>
                 </div>
 
-                <div class="section">
-                    <h3>Water Quality</h3>
-                    <div class="flex-row">
-                        <div class="column">
-                            <h4>Treated Water</h4>
-                            <label for="treated_alum_pacl_jar">Alum/PACl - Jar Test (mg/L):</label>
-                            <input type="number" step="0.1" id="treated_alum_pacl_jar" name="treated_alum_pacl_jar" value="<?php echo $sessions->treated_alum_pacl_jar; ?>" readonly>
-                        </div>
-                    </div>
-                </div>
             </div>
             <?php endif; ?>
 
@@ -278,8 +269,34 @@
                     
                     <label for="ceb_reading">CEB Reading :</label>
                     <input type="number" step="1" id="ceb_reading" name="ceb_reading" value="<?php echo $sessions->ceb_reading; ?>" readonly>
+
+                    <label for="generator_reading">Generator Consumption (Kw/h) :</label>
+                    <input type="number" step="1" id="generator_consumption" name="generator_consumption" value="<?php echo $sessions->generator_consumption; ?>" readonly>
                 </div>
             </div>
+            <?php endif; ?>
+
+            <?php if ($sessions->formNo == 4): ?>
+                <div class="section">
+                    <h3>Treated Water</h3>
+                    <div class="flex-row">
+                        <div class="column"><br>
+                            <div id="shift1_details">
+                                <label for="treated_alum_pacl_jar">Alum/PACl - Jar Test (mg/L): [Shift 1]</label>
+                                <input type="number" step="0.1" id="treated_alum_pacl_jar" name="treated_alum_pacl_jar1" value="<?php echo $sessions->treated_alum_pacl_jar1; ?>" readonly>
+                            </div><br>
+                            <div id="shift2_details" >
+                                <label for="treated_alum_pacl_jar">Alum/PACl - Jar Test (mg/L): [Shift 2]</label>
+                                <input type="number" step="0.1" id="treated_alum_pacl_jar" name="treated_alum_pacl_jar2" value="<?php echo $sessions->treated_alum_pacl_jar2; ?>" readonly>
+                            </div><br>
+                            <div id="shift3_details" >
+                                <label for="treated_alum_pacl_jar">Alum/PACl - Jar Test (mg/L): [Shift 3]</label>
+                                <input type="number" step="0.1" id="treated_alum_pacl_jar" name="treated_alum_pacl_jar3" value="<?php echo $sessions->treated_alum_pacl_jar3; ?>" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             <?php endif; ?>
         </form>
     </div>

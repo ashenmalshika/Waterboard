@@ -10,7 +10,7 @@
     <div class="login-root">
         <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-                <h1>WATERBOARD MATARA</h1>
+                <h1>NWSDB - MATARA REGION</h1>
                 <?php if ($this->session->flashdata('msg')): ?>
                     <div class="msg"><?php echo $this->session->flashdata('msg'); ?></div>
                 <?php endif; ?>

@@ -63,6 +63,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                             echo 'Per Day';
                                                         } elseif ($row->formNo == 3) {
                                                             echo 'Per Month';
+                                                        } elseif ($row->formNo == 4) {
+                                                            echo 'Eight Hour';
                                                         } else {
                                                             echo 'Unknown Form';
                                                         }

@@ -72,24 +72,6 @@ class Dashboard extends CI_Controller {
         $this->load->view('template/formData', $data);
  
     }
-    public function graphs(){
-        if (!$this->session->userdata('user_id')) {
-            redirect('Welcome');
-        }
-
-        // Set headers to prevent caching
-        $this->output->set_header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
-        $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
-        $this->output->set_header('Pragma: no-cache');
-
-
-        $this->load->view('template/header');
-        $this->load->view('template/topmenu');
-        $this->load->view('template/sidemenu');
-        $this->load->view('template/graphsContent');
-        $this->load->view('template/footer');
-    }
     public function monthchart(){
         if (!$this->session->userdata('user_id')) {
             redirect('Welcome');
