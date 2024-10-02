@@ -20,7 +20,7 @@
     background-color: #d9d9d9;
     padding: 20px;
     border-radius: 8px;
-    max-width: 600px;
+    max-width: 850px;
     margin: 20px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #ccc;
@@ -136,11 +136,11 @@ h4{
     </style>
 </head>
 <body>
-
+<div class="wrapper">
     <div class="content-wrapper">
         <br>
         <section class="content-header">
-            <label for="yearDropdown">Check Jar Test of Different plants</label><br>
+            <label for="yearDropdown">Check Actual Alum/PaCl, Jar test data of selected plant</label><br>
             <label for="yearDropdown">Select Year:</label>
             <select id="yearDropdown"></select>
 
@@ -160,28 +160,45 @@ h4{
                 <option value="12">December</option>
             </select>
 
+            <label for="plantDropdown">Select Plant:</label>
+            <select id="plantDropdown">
+                <option value="415168">Malimbada Old</option>
+                <option value="466192">Malimbada New</option>
+                <option value="661055">Hallala Old</option>
+                <option value="290645">Hallala New</option>
+                <option value="540962">Katuwangoda</option>
+                <option value="595956">Akuressa</option>
+                <option value="323107">Nadugala</option>
+                <option value="915959">Pitabaddara</option>
+                <option value="548682">Makandura</option>
+                <option value="998709">Radampala</option>
+                <option value="999864">Thihagoda</option>
+                <option value="522842">Hakmana</option>
+                <option value="136679">Karagoda Uyangoda</option>
+                <option value="674107">Deniyaya</option>
+            </select>
+
+
             <button onclick="searchData()">Search</button>
             
         </section>
 
         <section class="content" id="chartContainer" style="display:none">
-            <br><h4>Jar Test (mg/L)</h4><br>
+            <br><h4>Jar Test/Actual Alum/Actual PaCl</h4><br>
             <canvas id="dieselChart"></canvas>
         </section><br>
         <section class="error" id="errorContainer" >
             <p id="output"></p>
         </section>
     </div>
-
+</div>
 
 <!-- Include necessary JS libraries -->
 <script src="<?php echo base_url()?>assets/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-<script>
-// Initialize the year dropdown when the page loads
+<script>// Initialize the year dropdown when the page loads
 window.onload = function() {
     populateYearDropdown();
     initializeChart();
@@ -201,68 +218,92 @@ function populateYearDropdown() {
     }
 }
 
-// Function to search data based on selected month and year
+
+
 function searchData() {
     const selectedYear = document.getElementById('yearDropdown').value;
     const selectedMonth = document.getElementById('monthDropdown').value;
+    const selectedPlant = document.getElementById('plantDropdown').value;
 
-    if (selectedYear && selectedMonth) {
+    if (selectedYear && selectedMonth && selectedPlant) {
         const searchDate = `${selectedYear}-${selectedMonth}`;
 
         // AJAX request to fetch data from the server
         $.ajax({
-            url: '<?= base_url("Dashboard/fetch_jar_data") ?>',
+            url: '<?= base_url("Dashboard/jarTestData") ?>',
             type: 'POST',
-            data: {date: searchDate},
+            data: {
+                date: searchDate,
+                plantId: selectedPlant
+            },
             dataType: 'json',
             success: function(response) {
-                if (response.branchNames.length > 0) {
-                    // Show the chart container and update the chart
-                    console.log(response.values);
-                    document.getElementById('chartContainer').style.display = 'block';
-                    document.getElementById('output').innerText = ''; // Clear any previous messages
-                    updateChart(response.branchNames, response.values);
-                } else {
-                    // No data found, hide the chart and show the message
-                    document.getElementById('chartContainer').style.display = 'none';
-                    document.getElementById('errorContainer').style.display = 'block';
-                    showError('Jar Test Data not found for the selected month and year.');
+                if (response.status === 'success') {
+                 
+                 // Show the chart container and update the chart
+                 document.getElementById('chartContainer').style.display = 'block';
+                 document.getElementById('output').innerText = ''; // Clear any previous messages
 
-                }
+                 updateChart(response.data.day, response.data.jarTest, response.data.actualAlum, response.data.actualPacl);
+                               
+             } else {
+                 // No data found, hide the chart and show the message
+                 document.getElementById('chartContainer').style.display = 'none';
+                 document.getElementById('errorContainer').style.display = 'block';
+                 showError(response.message);
+             }
+                                                
             },
             error: function(xhr, status, error) {
                 // Hide the chart and clear messages if the fetch fails
                 document.getElementById('chartContainer').style.display = 'none';
                 document.getElementById('errorContainer').style.display = 'block';
-                showError('Jar Test Data not found for the selected month and year.');
- // No error message needed
+                showError('No Jar test, Actual Alum/PaCl data found for the selected date.');
             }
         });
     } else {
-        // If no year or month is selected, show an appropriate message
+        // If no year, month, or plant is selected, show an appropriate message
         document.getElementById('errorContainer').style.display = 'block';
-        document.getElementById('output').innerText = 'Please select both a month and a year.';
+        document.getElementById('output').innerText = 'Please select a plant, month, and year.';
         document.getElementById('chartContainer').style.display = 'none';
     }
 }
 
-// Initialize an empty chart
+// Initialize an empty stacked chart
 let dieselChart;
 
 function initializeChart() {
     const ctx = document.getElementById('dieselChart').getContext('2d');
     dieselChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: [],
-        datasets: [{
-            label: 'Jar Test',
-            data: [],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1,
-            maxBarThickness: 80
-        }]
+        datasets: [
+            {
+                label: 'Alum/PaCl-Jar Test',
+                data: [],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                maxBarThickness: 80
+            },
+            {
+                label: 'Actual Alum',
+                data: [],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 2,
+                maxBarThickness: 80
+            },
+            {
+                label: 'Actual PaCl',
+                data: [],
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 2,
+                maxBarThickness: 80
+            }
+        ]
     },
     options: {
         scales: {
@@ -280,12 +321,16 @@ function initializeChart() {
 }
 
 // Function to update the chart with new data
-function updateChart(branchNames, values) {
-    dieselChart.data.labels = branchNames;
-    dieselChart.data.datasets[0].data = values;
+function updateChart(day, jarTest, actualAlum, actualPacl) {
+    dieselChart.data.labels = day;
+    dieselChart.data.datasets[0].data = jarTest;
+    dieselChart.data.datasets[1].data = actualAlum;
+    dieselChart.data.datasets[2].data = actualPacl;
     dieselChart.options.scales.y.min = 0;
     dieselChart.update();
 }
+
+// Function to display error messages and hide after a delay
 function showError(message) {
     const errorContainer = document.getElementById('errorContainer');
     const output = document.getElementById('output');
@@ -301,8 +346,6 @@ function showError(message) {
         errorContainer.style.display = 'none';
     }, 5000);
 }
-
-
 </script>
 </body>
 

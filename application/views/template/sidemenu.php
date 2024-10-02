@@ -62,11 +62,17 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Charts
+                View Charts
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo base_url('chartThree');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Chemical Usage</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="<?php echo base_url('chartOne');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -80,24 +86,34 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url('chartThree');?>" class="nav-link">
+                <a href="<?php echo base_url('chartFour');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Chemical Usage</p>
+                  <p>Raw/Treated Water</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url('chartFour');?>" class="nav-link">
+                <a href="<?php echo base_url('chartSix');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Raw Water Turbidity</p>
+                  <p>Production</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo base_url('chartFive');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Jar Test</p>
+                  <p>Jar Test/ Actual Alum</p>
                 </a>
               </li>
             </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href=<?php echo base_url('Dashboard/downloadData');?> class="nav-link">
+              <i class="nav-icon fas fa-download"></i>
+              <p>
+                Download Data
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
           </li>
 
 

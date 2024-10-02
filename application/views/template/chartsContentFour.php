@@ -15,7 +15,7 @@
     <div class="content-wrapper">
         <br>
         <section class="content-header">
-            <label for="yearDropdown">Check Raw Water Turbidity of Selected plant</label><br>
+            <label for="yearDropdown">Check Water Quality of Selected plant</label><br>
             
             <label for="monthDropdown">Select Date:</label>
             <input type="date" id="monthDropdown" name="date" writingsuggestions="true">
@@ -44,8 +44,14 @@
         </section>
 
         <section class="content" id="chartContainer" style="display:none">
-            <br><h4>Raw Water Turbidity (NTU)</h4><br>
-            <canvas id="dieselChart"></canvas>
+            <br><h4>Raw pH and Treated pH</h4><br>
+            <canvas id="phChart"></canvas>
+
+            <br><h4>Raw Turbidity and Treated Turbidity (NTU)</h4><br>
+            <canvas id="turbidityChart"></canvas><br>
+
+            <h4>Treated RCL (mg/L)</h4><br>
+            <canvas id="rclChart"></canvas>
         </section><br>
         <section class="error" id="errorContainer" >
             <p id="output"></p>
@@ -61,7 +67,7 @@
 <script>
 
 window.onload = function() {
-    initializeChart();
+    initializeCharts();
 };
 
 function searchData() {
@@ -84,7 +90,7 @@ function searchData() {
                     document.getElementById('chartContainer').style.display = 'block';
                     document.getElementById('output').innerText = ''; // Clear any previous messages
 
-                    updateChart(response.time, response.turbidity);
+                    updateCharts(response.time, response.rawTurbidity, response.rawPh, response.treatedRcl, response.treatedTurbidity, response.treatedPh);
                 } else {
                     // No data found, hide the chart and show the message
                     document.getElementById('chartContainer').style.display = 'none';
@@ -96,7 +102,7 @@ function searchData() {
                 // Hide the chart and clear messages if the fetch fails
                 document.getElementById('chartContainer').style.display = 'none';
                 document.getElementById('errorContainer').style.display = 'block';
-                showError('Raw Turbidity Data not found for the selected date.');
+                showError('Raw Water & Treated Water Quality Data not found.');
             }
         });
     } else {
@@ -108,40 +114,110 @@ function searchData() {
 }
 
 
-// Initialize an empty stacked chart
-let dieselChart;
-function initializeChart() {
-    const ctx = document.getElementById('dieselChart').getContext('2d');
-    dieselChart = new Chart(ctx, {
+let phChart, turbidityChart, rclChart;
+
+function initializeCharts() {
+    // Initialize pH Chart
+    const ctxPh = document.getElementById('phChart').getContext('2d');
+    phChart = new Chart(ctxPh, {
         type: 'bar',
         data: {
-            labels: [],
+            labels: [], // Time labels
             datasets: [{
-                label: 'Turbidity',
+                label: 'Raw pH',
                 data: [],
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                maxBarThickness: 80
+            }, {
+                label: 'Treated pH',
+                data: [],
+                backgroundColor: 'rgba(255, 99, 71, 0.2)',
+                borderColor: 'rgba(255, 9, 8, 0.7)',
                 borderWidth: 1,
                 maxBarThickness: 80
             }]
         },
         options: {
             scales: {
-                y: {
-                    min: 0  // Ensures the Y-axis starts at 0
-                }
+                y: { min: 0 }
+            }
+        }
+    });
+
+    // Initialize Turbidity Chart
+    const ctxTurbidity = document.getElementById('turbidityChart').getContext('2d');
+    turbidityChart = new Chart(ctxTurbidity, {
+        type: 'bar',
+        data: {
+            labels: [], // Time labels
+            datasets: [{
+                label: 'Raw Turbidity',
+                data: [],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1,
+                maxBarThickness: 80
+            }, {
+                label: 'Treated Turbidity',
+                data: [],
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 1,
+                maxBarThickness: 80
+            }]
+        },
+        options: {
+            scales: {
+                y: { min: 0 }
+            }
+        }
+    });
+
+    // Initialize Treated RCL Chart
+    const ctxRcl = document.getElementById('rclChart').getContext('2d');
+    rclChart = new Chart(ctxRcl, {
+        type: 'bar',
+        data: {
+            labels: [], // Time labels
+            datasets: [{
+                label: 'Treated RCL',
+                data: [],
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1,
+                maxBarThickness: 80
+            }]
+        },
+        options: {
+            scales: {
+                y: { min: 0 }
             }
         }
     });
 }
 
-// Function to update the chart with new data
-function updateChart(time, turbidity) {
-    dieselChart.data.labels = time;
-    dieselChart.data.datasets[0].data = turbidity;
-    dieselChart.options.scales.y.min = 0;
-    dieselChart.update();
+// Function to update the charts with new data
+function updateCharts(time, rawTurbidity, treatedTurbidity, rawPh, treatedPh, treatedRcl) {
+    // Update pH Chart
+    phChart.data.labels = time;
+    phChart.data.datasets[0].data = rawPh;
+    phChart.data.datasets[1].data = treatedPh;
+    phChart.update();
+
+    // Update Turbidity Chart
+    turbidityChart.data.labels = time;
+    turbidityChart.data.datasets[0].data = rawTurbidity;
+    turbidityChart.data.datasets[1].data = treatedTurbidity;
+    turbidityChart.update();
+
+    // Update RCL Chart
+    rclChart.data.labels = time;
+    rclChart.data.datasets[0].data = treatedRcl;
+    rclChart.update();
 }
+
 function showError(message) {
     const errorContainer = document.getElementById('errorContainer');
     const output = document.getElementById('output');

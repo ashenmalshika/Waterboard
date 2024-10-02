@@ -140,24 +140,26 @@ h4{
     <div class="content-wrapper">
         <br>
         <section class="content-header">
-            <label for="yearDropdown">Check Electricity Consumption of Different plants</label><br>
+            <label for="yearDropdown">Check Electricity Consumption</label><br>
             <label for="yearDropdown">Select Year:</label>
             <select id="yearDropdown"></select>
 
-            <label for="monthDropdown">Select Month:</label>
-            <select id="monthDropdown">
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
+            <label for="plantDropdown">Select Plant:</label>
+            <select id="plantDropdown">
+                <option value="415168">Malimbada Old</option>
+                <option value="466192">Malimbada New</option>
+                <option value="661055">Hallala Old</option>
+                <option value="290645">Hallala New</option>
+                <option value="540962">Katuwangoda</option>
+                <option value="595956">Akuressa</option>
+                <option value="323107">Nadugala</option>
+                <option value="915959">Pitabaddara</option>
+                <option value="548682">Makandura</option>
+                <option value="998709">Radampala</option>
+                <option value="999864">Thihagoda</option>
+                <option value="522842">Hakmana</option>
+                <option value="136679">Karagoda Uyangoda</option>
+                <option value="674107">Deniyaya</option>
             </select>
 
             <button onclick="searchData()">Search</button>
@@ -204,35 +206,35 @@ function populateYearDropdown() {
 // Function to search data based on selected month and year
 function searchData() {
     const selectedYear = document.getElementById('yearDropdown').value;
-    const selectedMonth = document.getElementById('monthDropdown').value;
+    const selectedPlant = document.getElementById('plantDropdown').value;
 
-    if (selectedYear && selectedMonth) {
-        const searchDate = `${selectedYear}-${selectedMonth}`;
+    if (selectedYear && selectedPlant) {
+        const searchDate = `${selectedYear}`;
 
         // AJAX request to fetch data from the server
         $.ajax({
             url: '<?= base_url("Dashboard/fetch_electricity_data") ?>',
             type: 'POST',
-            data: {date: searchDate},
+            data: {date: searchDate,plantId: selectedPlant},
             dataType: 'json',
             success: function(response) {
-                if (response.branchNames.length > 0) {
+                if (response.month.length > 0) {
                     // Show the chart container and update the chart
                     document.getElementById('chartContainer').style.display = 'block';
                     document.getElementById('output').innerText = ''; // Clear any previous messages
-                    updateChart(response.branchNames, response.unitValues);
+                    updateChart(response.month, response.unitValues);
                 } else {
                     // No data found, hide the chart and show the message
                     document.getElementById('chartContainer').style.display = 'none';
                     document.getElementById('errorContainer').style.display = 'block';
-                    showError('Electricity Consumption Data not found for the selected month and year.');
+                    showError('Electricity Consumption Data not found for the selected year.');
                 }
             },
             error: function(xhr, status, error) {
                 // Hide the chart and clear messages if the fetch fails
                 document.getElementById('chartContainer').style.display = 'none';
                 document.getElementById('errorContainer').style.display = 'block';
-                showError('Electricity Consumption Data not found for the selected month and year.');
+                showError('Electricity Consumption Data not found for the selected year.');
             }
         });
     } else {
@@ -275,8 +277,8 @@ function initializeChart() {
 }
 
 // Function to update the chart with new data
-function updateChart(branchNames, unitValues) {
-    dieselChart.data.labels = branchNames;
+function updateChart(month, unitValues) {
+    dieselChart.data.labels = month;
     dieselChart.data.datasets[0].data = unitValues;
     dieselChart.update();
 }
