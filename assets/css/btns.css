@@ -1,3 +1,18 @@
+#notification {
+    position: fixed;
+    top: 70px; /* Adjust to bottom: 20px for a bottom notification */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.6s ease-out; /* Smooth fade-out effect */
+}
 .page-number {
     display: none;
 }
@@ -11,3 +26,4 @@ button {
     background-color: white;
     border-radius: 3px;
 }
+

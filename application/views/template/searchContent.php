@@ -45,7 +45,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         <th>Form Type</th>
                                         <th>Plant ID</th>
                                         <th>Data Inserted Date</th>
-                                        <th>View Details</th>                                       
+                                        <th>View Details</th> 
+                                        <th>Delete Data</th>                                      
                                     </tr>
                                 </thead>
                                 <tbody >
@@ -75,6 +76,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <td>
                                                     <a href="<?php echo base_url('Dashboard/displayData/'.$row->id); ?>" class="btn btn-block btn-info">View</a>
                                                 </td>  
+                                                <td>
+                                                    <a href="<?php echo base_url('Dashboard/deleteData/'.$row->id); ?>" class="btn btn-block btn-danger">Delete</a>
+                                                </td>  
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php else: ?>
@@ -98,9 +102,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         </div>
     </section>
 </div>
+<?php if ($this->session->flashdata('message')): ?>
+    <div id="notification">
+        <?php echo $this->session->flashdata('message'); ?>
+    </div>
+
+    <script>
+        // Show the notification and hide it after 5 seconds
+        setTimeout(function() {
+            var notification = document.getElementById('notification');
+            notification.style.opacity = '0';  // Fade out
+
+            // After the fade-out effect, hide the notification
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 600); // Time for the fade-out effect (600ms)
+        }, 3000); // 2000ms = 5 seconds
+    </script>
+<?php endif; ?>
 
 <!-- /.card -->
-
 <script src="<?php echo base_url()?>assets/javascript/script1.js"></script>
 <script src="<?php echo base_url()?>assets/javascript/script2.js"></script>
 </body>

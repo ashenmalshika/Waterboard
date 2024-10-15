@@ -91,6 +91,20 @@ class Dashboard extends CI_Controller {
         $this->load->view('template/formData', $data);
  
     }
+    public function deleteData($id) {
+        // Call the delete method from the model
+        $result = $this->User_model->deleteRowById($id);
+
+        if ($result) {
+            // Successfully deleted
+            $this->session->set_flashdata('message', 'Data deleted successfully.');
+        } else {
+            // Error while deleting
+            $this->session->set_flashdata('message', 'Failed to delete data.');
+        }
+
+        redirect($_SERVER['HTTP_REFERER']);
+    }
     public function monthchart(){
         if (!$this->session->userdata('user_id')) {
             redirect('Welcome');

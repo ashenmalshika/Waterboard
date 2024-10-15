@@ -15,6 +15,11 @@ class User_model extends CI_Model {
             return false;
         }
     }
+    // Function to delete a row by ID
+    public function deleteRowById($id) {
+        $this->db->where('id', $id); // Replace 'id' with your primary key column
+        return $this->db->delete('waterqualitydata');
+    }
     public function getUsersData() {
         $this->db->where('role', 'user');
         $query = $this->db->get('users'); // Assuming your table name is 'users'

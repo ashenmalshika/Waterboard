@@ -199,7 +199,7 @@ function initializeCharts() {
 }
 
 // Function to update the charts with new data
-function updateCharts(time, rawTurbidity, treatedTurbidity, rawPh, treatedPh, treatedRcl) {
+function updateCharts(time, rawTurbidity, rawPh, treatedRcl, treatedTurbidity,  treatedPh) {
     // Update pH Chart
     phChart.data.labels = time;
     phChart.data.datasets[0].data = rawPh;
