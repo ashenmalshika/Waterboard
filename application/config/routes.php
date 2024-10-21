@@ -65,4 +65,5 @@ $route['chartFour'] = 'Dashboard/rawWaterChart';
 $route['chartFive'] = 'Dashboard/jarTestChart';
 $route['chartSix'] = 'Dashboard/productionChart';
 $route['electricityData'] = 'Dashboard/fetch_electricity_data';
+$route['chartSeven'] = 'Dashboard/waterQualityPhChart';
 $route['addMonthlyData'] = 'Waterquality/monthlyData';

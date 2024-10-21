@@ -9,17 +9,21 @@
     <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/downloadData.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
+   
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
 </head>
 <body>
     <div class="content-wrapper">
         <br>
         <section class="content-header">
+        <form id="dataForm" action="<?php echo base_url("Excelsheet/loadData")?>" method="POST">
             <label for="yearDropdown">Check Data Availability</label><br>
             <label for="yearDropdown">Select Year:</label>
-            <select id="yearDropdown"></select>
+            <select id="yearDropdown" name="year"></select>
 
             <label for="monthDropdown">Select Month:</label>
-            <select id="monthDropdown">
+            <select id="monthDropdown" name="month">
                 <option value="01">January</option>
                 <option value="02">February</option>
                 <option value="03">March</option>
@@ -34,26 +38,33 @@
                 <option value="12">December</option>
             </select>
 
-            <button onclick="">Search</button>
-            
+            <label for="plantDropdown">Select Plant:</label>
+            <select id="plantDropdown" name="plantId">
+                <option value="415168">Malimbada Old</option>
+                <option value="466192">Malimbada New</option>
+                <option value="661055">Hallala Old</option>
+                <option value="290645">Hallala New</option>
+                <option value="540962">Katuwangoda</option>
+                <option value="595956">Akuressa</option>
+                <option value="323107">Nadugala</option>
+                <option value="915959">Pitabaddara</option>
+                <option value="548682">Makandura</option>
+                <option value="998709">Radampala</option>
+                <option value="999864">Thihagoda</option>
+                <option value="522842">Hakmana</option>
+                <option value="136679">Karagoda Uyangoda</option>
+                <option value="674107">Deniyaya</option>
+            </select>
+
+            <button type="submit">Search</button>
+</form>
         </section>
-        <section class="error" id="errorContainer" >
-            <p id="output"></p>
-        </section>
+ 
     </div>
-
-
-<!-- Include necessary JS libraries -->
-<script src="<?php echo base_url()?>assets/plugins/jquery/jquery.min.js"></script>
-<script src="<?php echo base_url()?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <script>
 // Initialize the year dropdown when the page loads
 window.onload = function() {
     populateYearDropdown();
-    initializeChart();
 };
 
 // Populate the year dropdown with the last 5 years
@@ -69,36 +80,6 @@ function populateYearDropdown() {
         yearDropdown.appendChild(option);
     }
 }
-
-// Function to search data based on selected month and year
-function searchData() {
-    const selectedYear = document.getElementById('yearDropdown').value;
-    const selectedMonth = document.getElementById('monthDropdown').value;
-
-    if (selectedYear && selectedMonth) {
-        const searchDate = `${selectedYear}-${selectedMonth}`;
-
-        // AJAX request to fetch data from the server
-        $.ajax({
-            url: '<?= base_url("Excelsheet") ?>',
-            type: 'POST',
-            data: {date: searchDate},
-            dataType: 'json',
-            success: function(response) {
-                
-            },
-            error: function(xhr, status, error) {
-            
-            }
-        });
-    } else {
-        // If no year or month is selected, show an appropriate message
-        document.getElementById('errorContainer').style.display = 'block';
-        document.getElementById('output').innerText = 'Please select both a month and a year.';
-        document.getElementById('chartContainer').style.display = 'none';
-    }
-}
-
 function showError(message) {
     const errorContainer = document.getElementById('errorContainer');
     const output = document.getElementById('output');
@@ -114,9 +95,9 @@ function showError(message) {
         errorContainer.style.display = 'none';
     }, 5000);
 }
-
-
 </script>
+
+
 </body>
 
 </html>

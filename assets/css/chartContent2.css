@@ -1,0 +1,131 @@
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.content-header {
+background-color: #d9d9d9;
+padding: 20px;
+border-radius: 8px;
+max-width: 800px;
+margin: 20px auto;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+border: 1px solid #ccc;
+border-color:black;
+}
+
+.content-header label {
+font-weight: bold;
+margin-right: 10px;
+font-size: 14px;
+color: #333;
+}
+
+.content-header select {
+padding: 8px;
+font-size: 14px;
+border-radius: 4px;
+border: 1px solid #ccc;
+margin-right: 20px;
+background-color: #fff;
+cursor: pointer;
+}
+.content-header input {
+padding: 6px;
+font-size: 14px;
+border-radius: 4px;
+border: 1px solid #ccc;
+margin-right: 20px;
+background-color: #fff;
+cursor: pointer;
+}
+
+.content-header button {
+background-color: #007bff;
+color: #fff;
+padding: 10px 15px;
+font-size: 14px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.content-header button:hover {
+background-color: #0056b3;
+}
+
+#output {
+margin-top: 20px;
+font-size: 16px;
+color: #333;
+font-weight: normal;
+}
+.content {
+
+padding: 20px;
+border-radius: 8px;
+max-width: 800px;
+margin: auto;
+
+}
+
+#dieselChart {
+width: 100%;
+height: auto;
+max-height: 400px;
+border-radius: 8px;
+background-color: #fff;
+box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.05);
+padding:20px;
+}
+/* Error Message Container */
+#errorContainer {
+display: none; /* Initially hidden */
+margin: auto;
+padding: 10px;
+border: 1px solid #ff4d4d;
+background-color: #ffe6e6;
+color: #cc0000;
+border-radius: 5px;
+font-weight: bold;
+text-align: center;
+max-width:80%;
+}
+h4{
+text-align: center;
+}
+
+/* Error Text */
+#errorContainer p {
+margin: 0;
+font-size: 16px;
+}
+
+@media screen and (max-width: 600px) {
+.content {
+padding: 15px;
+max-width: 100%;
+}
+
+#dieselChart {
+max-height: 300px;
+}
+}
+
+@media screen and (max-width: 600px) {
+.content-header {
+padding: 15px;
+}
+
+.content-header label, .content-header select, .content-header button {
+display: block;
+width: 100%;
+margin-bottom: 15px;
+}
+
+.content-header select, .content-header button {
+margin-right: 0;
+}
+}

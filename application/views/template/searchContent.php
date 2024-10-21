@@ -15,6 +15,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/btns.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
 </head>
 
 <body>
@@ -29,14 +32,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Details of All Filled Forms</h3>
-                            <div class="float-right" style="display: flex;">
-                                    <input type="text" id="searchInput" placeholder="Search..." style="margin-right: 5px;">
-                                    <button class='btn btn-info btn-sm' onclick="searchTable()" type="button">Search</button>
-                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example2" class="table table-bordered table-hover">
+                              <!-- Date range filter -->    
+                        <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Date</th>
@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                                 <td><?php echo $row->branchID; ?></td>
                                                 <td><?php echo $row->dataInsertedDate; ?></td>
                                                 <td>
-                                                    <a href="<?php echo base_url('Dashboard/displayData/'.$row->id); ?>" class="btn btn-block btn-info">View</a>
+                                                    <a href="<?php echo base_url('Dashboard/displayData/'.$row->id); ?>" class="btn btn-info btn-block">View</a>
                                                 </td>  
                                                 <td>
                                                     <a href="<?php echo base_url('Dashboard/deleteData/'.$row->id); ?>" class="btn btn-block btn-danger">Delete</a>
@@ -88,11 +88,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                     <?php endif; ?>
                                 </tbody>                       
                             </table>
-                            <div id="pagination">
+                            <!-- <div id="pagination">
                                 <button id="prevBtn" disabled>Prev</button>
                                 <span id="pageNumbers" class="page-number"></span>
                                 <button id="nextBtn">Next</button>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -122,7 +122,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 <?php endif; ?>
 
 <!-- /.card -->
-<script src="<?php echo base_url()?>assets/javascript/script1.js"></script>
-<script src="<?php echo base_url()?>assets/javascript/script2.js"></script>
+<!-- <script src="<?php echo base_url()?>assets/javascript/script1.js"></script> -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+<!-- Bootstrap 5 JS (bundle includes Popper.js) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+
+<script>
+$('#example').DataTable({
+    "paging":true,
+    "order": [0, 'desc'], // Enable/disable sorting
+    "searching": true, // Enable/disable searching
+});
+</script>
+
 </body>
 

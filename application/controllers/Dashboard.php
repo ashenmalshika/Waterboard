@@ -403,6 +403,74 @@ class Dashboard extends CI_Controller {
         $this->load->view('template/chartsContentSix');
         $this->load->view('template/footer');
     } 
+    public function waterQualityPhChart(){
+        if (!$this->session->userdata('user_id')) {
+            redirect('Welcome');
+        }
+
+        // Set headers to prevent caching
+        $this->output->set_header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
+        $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
+        $this->output->set_header('Pragma: no-cache');
+
+
+        $this->load->view('template/header');
+        $this->load->view('template/topmenu');
+        $this->load->view('template/sidemenu');
+        $this->load->view('template/chartsContentSeven');
+        $this->load->view('template/footer');
+    } 
+    public function waterQualityDataIm(){
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+            $date = $this->input->post('date'); // Expected format: YYYY-MM
+            $plantId = $this->input->post('plantId');
+
+            $year = substr($date, 0, 4);  
+            $month = substr($date, 5, 2);
+    
+            // Fetch data from the model
+            $productionData = $this->DataModel->getWaterQualityDataIm($year, $month, $plantId);   
+
+             // Check if data is available
+        if (!empty($productionData)) {
+            // Prepare arrays for chart data
+            $dates = [];
+            $rawTurbidity = [];
+            $rawPh = [];
+            $treatedRcl = [];
+            $treatedTurbidity = [];
+            $treatedPh = [];
+
+            // Loop through the data and prepare arrays
+            foreach ($productionData as $day => $values) {
+                $dates[] = $day; // Use the day as the date label
+                $rawTurbidity[] = $values['avg_raw_turbidity'];
+                $rawPh[] = $values['avg_raw_ph'];
+                $treatedRcl[] = $values['avg_treated_rcl'];
+                $treatedTurbidity[] = $values['avg_treated_turbidity'];
+                $treatedPh[] = $values['avg_treated_ph'];
+            }
+
+            // Return data as JSON for charting
+            echo json_encode([
+                'status' => 'success',
+                'dates' => $dates,
+                'rawPh' => $rawPh,
+                'treatedRcl' => $treatedRcl,
+                'treatedTurbidity' => $treatedTurbidity,
+                'treatedPh' => $treatedPh,
+                'rawTurbidity' => $rawTurbidity
+            ]);
+        } else {
+            // No data found for the selected date and plant
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Raw Water & Treated Water Quality Data not found.'
+            ]);
+        }
+    }
+    } 
     public function productionData(){
         if ($this->input->server('REQUEST_METHOD') === 'POST') {
             $date = $this->input->post('date'); // Expected format: YYYY-MM

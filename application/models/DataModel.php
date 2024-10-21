@@ -273,4 +273,141 @@ class DataModel extends CI_Model {
     
         return $finalResult;
     }
+    public function getWaterQualityDataI($year, $month, $plantId) {
+        // Step 1: Retrieve all rows for the given year, month, and plant
+        $this->db->select('DATE(date) as day, raw_turbidity, raw_ph, treated_rcl, treated_turbidity, treated_ph');
+        $this->db->from('waterqualitydata');
+        $this->db->where('formNo', 1);
+        $this->db->where('branchID', $plantId);
+        $this->db->where('YEAR(date)', $year);
+        $this->db->where('MONTH(date)', $month);
+        $this->db->order_by('DATE(date)', 'ASC');
+        
+        $query = $this->db->get();
+        $results = $query->result_array();
+        
+        // Step 2: Process the data to calculate daily averages ignoring zero values
+        $dailyData = [];
+        
+        foreach ($results as $row) {
+            $day = $row['day'];
+            
+            // Initialize the day if not already in the array
+            if (!isset($dailyData[$day])) {
+                $dailyData[$day] = [
+                    'raw_turbidity' => [],
+                    'raw_ph' => [],
+                    'treated_rcl' => [],
+                    'treated_turbidity' => [],
+                    'treated_ph' => []
+                ];
+            }
+            
+            // Add only non-zero values to the corresponding arrays for that day
+            if ($row['raw_turbidity'] > 0) {
+                $dailyData[$day]['raw_turbidity'][] = $row['raw_turbidity'];
+            }
+            if ($row['raw_ph'] > 0) {
+                $dailyData[$day]['raw_ph'][] = $row['raw_ph'];
+            }
+            if ($row['treated_rcl'] > 0) {
+                $dailyData[$day]['treated_rcl'][] = $row['treated_rcl'];
+            }
+            if ($row['treated_turbidity'] > 0) {
+                $dailyData[$day]['treated_turbidity'][] = $row['treated_turbidity'];
+            }
+            if ($row['treated_ph'] > 0) {
+                $dailyData[$day]['treated_ph'][] = $row['treated_ph'];
+            }
+        }
+        
+        // Step 3: Calculate averages for each valid day, ignoring zero values
+        $finalData = [];
+        
+        foreach ($dailyData as $day => $values) {
+            // Skip the day if no valid values exist in any field
+            if (empty($values['raw_turbidity']) && empty($values['raw_ph']) && empty($values['treated_rcl']) && 
+                empty($values['treated_turbidity']) && empty($values['treated_ph'])) {
+                continue;
+            }
+            
+            // Calculate averages for fields that have non-zero values
+            $finalData[] = [
+                'day' => $day,
+                'avg_raw_turbidity' => !empty($values['raw_turbidity']) ? array_sum($values['raw_turbidity']) / count($values['raw_turbidity']) : null,
+                'avg_raw_ph' => !empty($values['raw_ph']) ? array_sum($values['raw_ph']) / count($values['raw_ph']) : null,
+                'avg_treated_rcl' => !empty($values['treated_rcl']) ? array_sum($values['treated_rcl']) / count($values['treated_rcl']) : null,
+                'avg_treated_turbidity' => !empty($values['treated_turbidity']) ? array_sum($values['treated_turbidity']) / count($values['treated_turbidity']) : null,
+                'avg_treated_ph' => !empty($values['treated_ph']) ? array_sum($values['treated_ph']) / count($values['treated_ph']) : null
+            ];
+        }
+        
+        return $finalData;
+    }
+    public function getWaterQualityDataIm($year, $month, $plantId) {
+        // Step 1: Retrieve all rows for the given year, month, and plant
+        $this->db->select('DATE(date) as day, raw_turbidity, raw_ph, treated_rcl, treated_turbidity, treated_ph');
+        $this->db->from('waterqualitydata');
+        $this->db->where('formNo', 1);
+        $this->db->where('branchID', $plantId);
+        $this->db->where('YEAR(date)', $year);
+        $this->db->where('MONTH(date)', $month);
+        $this->db->order_by('DATE(date)', 'ASC');
+        
+        $query = $this->db->get();
+        $results = $query->result_array();
+    
+        // Step 2: Process the results to prepare the final array
+        $finalData = [];
+    
+        foreach ($results as $row) {
+            // Check if any value is zero
+            if ($row['raw_turbidity'] > 0 && $row['raw_ph'] > 0 && 
+                $row['treated_rcl'] > 0 && $row['treated_turbidity'] > 0 && 
+                $row['treated_ph'] > 0) {
+    
+                $day = $row['day'];
+                
+                // Initialize the day if not already in the array
+                if (!isset($finalData[$day])) {
+                    $finalData[$day] = [
+                        'raw_turbidity' => [],
+                        'raw_ph' => [],
+                        'treated_rcl' => [],
+                        'treated_turbidity' => [],
+                        'treated_ph' => []
+                    ];
+                }
+                
+                // Store values directly into the corresponding arrays for that day
+                $finalData[$day]['raw_turbidity'][] = $row['raw_turbidity'];
+                $finalData[$day]['raw_ph'][] = $row['raw_ph'];
+                $finalData[$day]['treated_rcl'][] = $row['treated_rcl'];
+                $finalData[$day]['treated_turbidity'][] = $row['treated_turbidity'];
+                $finalData[$day]['treated_ph'][] = $row['treated_ph'];
+            }
+        }
+    
+        // Step 3: Calculate averages for each day
+        $averagedData = [];
+        
+        foreach ($finalData as $day => $values) {
+            // Only calculate averages if there are multiple entries
+            if (count($values['raw_turbidity']) > 0) {
+                $averagedData[$day] = [
+                  'avg_raw_turbidity' => floor(array_sum($values['raw_turbidity']) / count($values['raw_turbidity']) * 100) / 100,
+                    'avg_raw_ph' => floor(array_sum($values['raw_ph']) / count($values['raw_ph']) * 100) / 100,
+                    'avg_treated_rcl' => floor(array_sum($values['treated_rcl']) / count($values['treated_rcl']) * 100) / 100,
+                    'avg_treated_turbidity' => floor(array_sum($values['treated_turbidity']) / count($values['treated_turbidity']) * 100) / 100,
+                    'avg_treated_ph' => floor(array_sum($values['treated_ph']) / count($values['treated_ph']) * 100) / 100,
+                ];
+            }
+        }
+    
+        return $averagedData; // Return the array with daily averages
+    }
+    
+    
+    
+    
 }

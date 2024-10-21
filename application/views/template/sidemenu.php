@@ -88,7 +88,7 @@
               <li class="nav-item">
                 <a href="<?php echo base_url('chartFour');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Raw/Treated Water</p>
+                  <p>Water Quality</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -101,6 +101,12 @@
                 <a href="<?php echo base_url('chartFive');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jar Test/ Actual Alum</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url('chartSeven');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Water Quality [Month]</p>
                 </a>
               </li>
             </ul>
