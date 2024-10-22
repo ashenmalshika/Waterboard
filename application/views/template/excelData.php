@@ -22,8 +22,10 @@
         <?php if (!empty($fileName)) : ?>
             <div class="topic" ><h3 style="font-weight: bold;display: inline-block;"><?php echo $fileName;?>-Form Results</h3></div>
             <?php endif;?>
-</div>    
+</div>  
+<?php if (!empty($fileName)) : ?>  
 <button class="logout-button" id="downloadExcel">Download</button>
+<?php endif;?>
         </section>
         <section class="content" id="content" >
             <div class="container-fluid" >
@@ -230,7 +232,7 @@
         let tableFour = document.querySelector("#formFourData");
         let tableOne = document.querySelector("#formOneData");
 
-        var fileName = "<?= $fileName; ?>";
+        var fileName = <?= json_encode($fileName); ?> || "defaultFileName";
         // Export the tables to Excel
         var table2excel = new Table2Excel();
         table2excel.export([tableTwo, tableThree, tableFour, tableOne], fileName);

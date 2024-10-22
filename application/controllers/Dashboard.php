@@ -77,6 +77,7 @@ class Dashboard extends CI_Controller {
         $this->output->set_header('Pragma: no-cache');
 
         $data['sessions'] = $this->User_model->getWaterQuality();
+        $data['fileName'] = null;
 
         $this->load->view('template/header');
         $this->load->view('template/topmenu');

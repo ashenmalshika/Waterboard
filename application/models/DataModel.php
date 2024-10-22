@@ -131,6 +131,7 @@ class DataModel extends CI_Model {
         $this->db->like('date', $date, 'after'); // Matches 'YYYY-MM%' format
         $this->db->where('formNo', 2); // Matches formNo = 2
         $this->db->where('branchID', $plantId);
+        $this->db->order_by('date', 'ASC');
         $query = $this->db->get('waterqualitydata');
         return $query->result();
     }
@@ -140,6 +141,7 @@ class DataModel extends CI_Model {
         $this->db->where('formNo', 1);
         $this->db->where('date', $date); // Assuming the 'date' field is in 'YYYY-MM-DD' format
         $this->db->where('branchID', $plantId);
+        $this->db->order_by('date', 'ASC');
     
         $query = $this->db->get();
         return $query->result_array();
