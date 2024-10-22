@@ -25,12 +25,23 @@ class Excelsheet extends CI_Controller {
             $data['twoHourData'] = $twoHourFormData;
             $data['fileName'] = $date.'-'.$plantName;
 
+            if (!$this->session->userdata('user_id')) {
+                redirect('Welcome');
+            }
+            $this->output->set_header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+            $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
+            $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
+            $this->output->set_header('Pragma: no-cache');
+
             $this->load->view('template/header');
             $this->load->view('template/topmenu');
             $this->load->view('template/sidemenu');
             $this->load->view('template/downloadData');
             $this->load->view('template/excelData', $data);
             $this->load->view('template/footer');
+            
+
+            
 
        
     }

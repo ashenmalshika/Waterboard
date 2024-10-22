@@ -17,7 +17,13 @@
 <body>
     <div class="content-wrapper">
         <section class="bttn">
-            <button class="logout-button" id="downloadExcel">Download</button>
+        
+        <div style="text-align: center;">
+        <?php if (!empty($fileName)) : ?>
+            <div class="topic" ><h3 style="font-weight: bold;display: inline-block;"><?php echo $fileName;?>-Form Results</h3></div>
+            <?php endif;?>
+</div>    
+<button class="logout-button" id="downloadExcel">Download</button>
         </section>
         <section class="content" id="content" >
             <div class="container-fluid" >

@@ -7,6 +7,9 @@
 .card{
     margin-top: 25px;
 }
+.box{
+    max-height:210px;
+}
 
 
 .content-header {

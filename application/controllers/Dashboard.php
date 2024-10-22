@@ -82,6 +82,7 @@ class Dashboard extends CI_Controller {
         $this->load->view('template/topmenu');
         $this->load->view('template/sidemenu');
         $this->load->view('template/downloadData', $data);
+        $this->load->view('template/excelData');
         $this->load->view('template/footer');
     }
     public function displayData($id){

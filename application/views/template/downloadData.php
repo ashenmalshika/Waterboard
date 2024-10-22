@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
 </head>
 <body>
+    <div class="box">
     <div class="content-wrapper">
         <br>
         <section class="content-header">
@@ -60,7 +61,7 @@
 </form>
         </section>
  
-    </div>
+    </div></div>   
 <script>
 // Initialize the year dropdown when the page loads
 window.onload = function() {
