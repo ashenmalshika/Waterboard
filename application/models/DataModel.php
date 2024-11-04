@@ -141,7 +141,7 @@ class DataModel extends CI_Model {
         $this->db->where('formNo', 1);
         $this->db->where('date', $date); // Assuming the 'date' field is in 'YYYY-MM-DD' format
         $this->db->where('branchID', $plantId);
-        $this->db->order_by('date', 'ASC');
+        $this->db->order_by('time', 'ASC');
     
         $query = $this->db->get();
         return $query->result_array();
